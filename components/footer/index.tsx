@@ -1,0 +1,62 @@
+"use client";
+
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import {Package} from "lucide-react";
+import { FaInstagram, FaFacebookF, FaXTwitter } from "react-icons/fa6";
+export default function Footer() {
+    const pathname = usePathname();
+    if (pathname === "/login") {
+    return null;
+    }
+
+    return (
+        <footer className="bg-[#171A1D] border-t border-[#3B3B40] p-8 text-white mt-auto">
+        <div className="mx-auto w-full px-6 md:w-10/12 md:px-0 py-12">
+            <div className="flex flex-col lg:flex-row justify-between gap-12 lg:gap-8">
+                <div className="flex flex-col gap-4 max-w-xs">
+                    <Link href="/" className="flex items-center gap-2 text-2xl font-black tracking-tight">
+                        <Package size={30} className="text-[#1473CD]" /> GEEK <span className="text-[#1473CD]">POP</span>
+                    </Link>
+                    <p className="font-regular text-[#C0C0C0]">A sua loja definitiva de cultura pop e colecionáveis.</p>       
+                </div>
+                <div className="flex flex-col gap-4 font-regular text-[#C0C0C0]">
+                    <h3 className="font-bold tracking-wider text-[#F5F5F5] pb-3">SOBRE NÓS</h3>
+                    <Link href="/contato" className="hover:text-white transition-colors">Fale Conosco</Link>
+                    <Link href="/" className="hover:text-white transition-colors">Política de Privacidade</Link>
+                    <Link href="/" className="hover:text-white transition-colors">Termos de Uso</Link>
+                </div>
+                <div className="flex flex-col gap-4 font-regular text-[#C0C0C0]">
+                    <h3 className="font-bold tracking-wider text-[#F5F5F5] pb-3">CONTATO</h3>
+                    <div onClick={() => navigator.clipboard.writeText("contato@geekpop.com.br")} className="cursor-pointer hover:text-white transition-colors group">
+                        <p className="font-bold text-[#F5F5F5] ">E-mail</p>
+                        <p>contato@geekpop.com.br</p>
+                    </div>
+                    <div onClick={() => navigator.clipboard.writeText("(32) 99999-9999")} className="cursor-pointer hover:text-white transition-colors group">
+                        <p className="font-bold text-[#F5F5F5]">Telefone</p>
+                        <p>(32) 99999-9999</p>
+                    </div>
+                </div>
+                <div className="flex flex-col gap-4 font-regular text-[#C0C0C0]">
+                    <h3 className="font-bold tracking-wider text-[#F5F5F5] pb-3 uppercase">SIGA-NOS</h3>
+                    <div className="flex gap-4">
+                        <Link href="/contato" className="p-2 border border-[#3B3B40] rounded-full hover:bg-[#1473CD] hover:text-white transition-colors flex items-center justify-center">
+                            <FaInstagram size={25} />
+                        </Link>
+                        <Link href="/contato" className="p-2 border border-[#3B3B40] rounded-full hover:bg-[#1473CD] hover:text-white transition-colors flex items-center justify-center">
+                            <FaFacebookF size={25} />
+                        </Link>
+                        <Link href="/contato" className="p-2 border border-[#3B3B40] rounded-full hover:bg-[#1473CD] hover:text-white transition-colors flex items-center justify-center">
+                            <FaXTwitter size={25} />
+                        </Link>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div className="mt-12 pt-4 border-t border-[#3B3B40] text-center text-[#C0C0C0] text-sm">
+            © 2026 GEEKPOP Colecionáveis. Todos os direitos reservados.
+        </div>
+        </footer>
+    );
+}

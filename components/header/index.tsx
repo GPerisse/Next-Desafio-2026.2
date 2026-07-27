@@ -3,9 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ShoppingCart, Box, Menu, X} from "lucide-react";
+import { ShoppingCart, Package, Menu, X} from "lucide-react";
 
-export function Navbar() {
+export default function Header() {
   const pathname = usePathname();
   const [isNavOpen, setIsNavOpen] = useState(false);
 
@@ -31,7 +31,7 @@ export function Navbar() {
       <div className="mx-auto flex justify-between items-center w-full px-6 md:w-10/12 md:px-0">
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center text-[#1473CD]">
-            <Box size={30} />
+            <Package size={30} />
           </Link>
           <Link href="/" className="text-2xl font-black tracking-tight flex">
             GEEK <span className="text-[#1473CD]">POP</span>
@@ -62,7 +62,7 @@ export function Navbar() {
         <div className="fixed inset-0 bg-[#171A1D] flex flex-col items-center pt-8 pb-12 z-50 md:hidden">
           <div className="flex items-center gap-2 mb-12">
             <div className="text-[#1473CD]">
-              <Box size={35} />
+              <Package size={35} />
             </div>
             <div className="text-3xl font-black tracking-tight">
               GEEK<span className="text-[#1473CD]">POP</span>
