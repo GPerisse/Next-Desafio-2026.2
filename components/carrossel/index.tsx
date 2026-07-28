@@ -14,7 +14,7 @@ export default function Carrossel(){
         if (emblaApi) emblaApi.scrollNext();
     }, [emblaApi]);
     return(
-        <section className="w-full bg-[#171A1D] py-16 md:py-24 text-white">
+        <section className="w-full bg-[#0D0F11] py-16 md:py-24 text-white">
             <div className="mx-auto w-full px-6 md:w-10/12 md:px-0">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-10">
                     <div>
@@ -34,7 +34,7 @@ export default function Carrossel(){
                     <div className="flex -ml-6">
                         <div className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 pl-6">
                             <div className="flex flex-col bg-[#1C1F22] rounded-xl overflow-hidden border border-[#2A2E33]">
-                                <div className="bg-[#171A1D] w-full h-[250px] flex items-center justify-center p-6 relative">
+                                <div className="bg-[#171A1D] w-full h-64 flex items-center justify-center p-6 relative">
                                     <Image 
                                         src="/batman.png" 
                                         alt="Funko Pop DC Batman"
@@ -47,15 +47,15 @@ export default function Carrossel(){
                                     <h2 className="font-bold text-[#F5F5F5]">DC - Batman</h2>
                                     <p className="text-xl font-black text-[#F5F5F5]">R$ 179,90</p>
                                     <Link href="/produtos/batman" className="mt-2 w-full flex items-center justify-center gap-2 bg-[#1473CD] hover:bg-[#105DA8] text-white font-bold py-3 rounded-lg transition-colors">
-                                        <Eye size={20} />
+                                        <Eye size={25} />
                                         Ver Detalhes
                                     </Link>
                                 </div>
                             </div>
                         </div>
-                        <div className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 pr-6">
+                        <div className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 pl-6">
                             <div className="flex flex-col bg-[#1C1F22] rounded-xl overflow-hidden border border-[#2A2E33]">
-                                <div className="bg-[#171A1D] w-full h-[250px] flex items-center justify-center p-6 relative">
+                                <div className="bg-[#171A1D] w-full h-64 flex items-center justify-center p-6 relative">
                                     <Image 
                                         src="/gohan.png" 
                                         alt="Funko Pop DC Batman"
@@ -68,15 +68,15 @@ export default function Carrossel(){
                                     <h2 className="font-bold text-[#F5F5F5]">DBZ - Gohan</h2>
                                     <p className="text-xl font-black text-[#F5F5F5]">R$ 199,90</p>
                                     <Link href="/produtos/batman" className="mt-2 w-full flex items-center justify-center gap-2 bg-[#1473CD] hover:bg-[#105DA8] text-white font-bold py-3 rounded-lg transition-colors">
-                                        <Eye size={20} />
+                                        <Eye size={25} />
                                         Ver Detalhes
                                     </Link>
                                 </div>
                             </div>
                         </div>
-                        <div className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 pr-6">
+                        <div className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 pl-6">
                             <div className="flex flex-col bg-[#1C1F22] rounded-xl overflow-hidden border border-[#2A2E33]">
-                                <div className="bg-[#171A1D] w-full h-[250px] flex items-center justify-center p-6 relative">
+                                <div className="bg-[#171A1D] w-full h-64 flex items-center justify-center p-6 relative">
                                     <Image 
                                         src="/max.png" 
                                         alt="Funko Pop DC Batman"
@@ -89,15 +89,15 @@ export default function Carrossel(){
                                     <h2 className="font-bold text-[#F5F5F5]">F1 - Max Verstappen</h2>
                                     <p className="text-xl font-black text-[#F5F5F5]">R$ 209,90</p>
                                     <Link href="/produtos/batman" className="mt-2 w-full flex items-center justify-center gap-2 bg-[#1473CD] hover:bg-[#105DA8] text-white font-bold py-3 rounded-lg transition-colors">
-                                        <Eye size={20} />
+                                        <Eye size={25} />
                                         Ver Detalhes
                                     </Link>
                                 </div>
                             </div>
                         </div>
-                        <div className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 pr-6">
+                        <div className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 pl-6">
                             <div className="flex flex-col bg-[#1C1F22] rounded-xl overflow-hidden border border-[#2A2E33]">
-                                <div className="bg-[#171A1D] w-full h-[250px] flex items-center justify-center p-6 relative">
+                                <div className="bg-[#171A1D] w-full h-64 flex items-center justify-center p-6 relative">
                                     <Image 
                                         src="/ezio.png" 
                                         alt="Funko Pop DC Batman"
@@ -110,15 +110,15 @@ export default function Carrossel(){
                                     <h2 className="font-bold text-[#F5F5F5]">AC - Ezio Audiotore</h2>
                                     <p className="text-xl font-black text-[#F5F5F5]">R$ 229,90</p>
                                     <Link href="/produtos/ezio" className="mt-2 w-full flex items-center justify-center gap-2 bg-[#1473CD] hover:bg-[#105DA8] text-white font-bold py-3 rounded-lg transition-colors">
-                                        <Eye size={20} />
+                                        <Eye size={25} />
                                         Ver Detalhes
                                     </Link>
                                 </div>
                             </div>
                         </div>
-                        <div className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 pr-6">
+                        <div className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 pl-6">
                             <div className="flex flex-col bg-[#1C1F22] rounded-xl overflow-hidden border border-[#2A2E33]">
-                                <div className="bg-[#171A1D] w-full h-[250px] flex items-center justify-center p-6 relative">
+                                <div className="bg-[#171A1D] w-full h-64 flex items-center justify-center p-6 relative">
                                     <Image 
                                         src="/darthvader.png" 
                                         alt="Funko Pop Star Wars Darth Vader"
@@ -131,15 +131,15 @@ export default function Carrossel(){
                                     <h2 className="font-bold text-[#F5F5F5]">Star Wars - Darth Vader</h2>
                                     <p className="text-xl font-black text-[#F5F5F5]">R$ 219,90</p>
                                     <Link href="/produtos/darthvader" className="mt-2 w-full flex items-center justify-center gap-2 bg-[#1473CD] hover:bg-[#105DA8] text-white font-bold py-3 rounded-lg transition-colors">
-                                        <Eye size={20} />
+                                        <Eye size={25} />
                                         Ver Detalhes
                                     </Link>
                                 </div>
                             </div>
                         </div>
-                        <div className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 pr-6">
+                        <div className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 pl-6">
                             <div className="flex flex-col bg-[#1C1F22] rounded-xl overflow-hidden border border-[#2A2E33]">
-                                <div className="bg-[#171A1D] w-full h-[250px] flex items-center justify-center p-6 relative">
+                                <div className="bg-[#171A1D] w-full h-64 flex items-center justify-center p-6 relative">
                                     <Image 
                                         src="/hermione.png" 
                                         alt="Funko Pop Harry Potter Hermione"
@@ -152,15 +152,15 @@ export default function Carrossel(){
                                     <h2 className="font-bold text-[#F5F5F5]">Harry Potter - Hermione</h2>
                                     <p className="text-xl font-black text-[#F5F5F5]">R$ 189,90</p>
                                     <Link href="/produtos/hermione" className="mt-2 w-full flex items-center justify-center gap-2 bg-[#1473CD] hover:bg-[#105DA8] text-white font-bold py-3 rounded-lg transition-colors">
-                                        <Eye size={20} />
+                                        <Eye size={25} />
                                         Ver Detalhes
                                     </Link>
                                 </div>
                             </div>
                         </div>
-                        <div className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 pr-6">
+                        <div className="flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 pl-6">
                             <div className="flex flex-col bg-[#1C1F22] rounded-xl overflow-hidden border border-[#2A2E33]">
-                                <div className="bg-[#171A1D] w-full h-[250px] flex items-center justify-center p-6 relative">
+                                <div className="bg-[#171A1D] w-full h-64 flex items-center justify-center p-6 relative">
                                     <Image 
                                         src="/homemaranha.png" 
                                         alt="Funko Pop Marvel Homem Aranha"
@@ -173,7 +173,7 @@ export default function Carrossel(){
                                     <h2 className="font-bold text-[#F5F5F5]">Marvel - Homem Aranha</h2>
                                     <p className="text-xl font-black text-[#F5F5F5]">R$ 199,90</p>
                                     <Link href="/produtos/homemaranha" className="mt-2 w-full flex items-center justify-center gap-2 bg-[#1473CD] hover:bg-[#105DA8] text-white font-bold py-3 rounded-lg transition-colors">
-                                        <Eye size={20} />
+                                        <Eye size={25} />
                                         Ver Detalhes
                                     </Link>
                                 </div>

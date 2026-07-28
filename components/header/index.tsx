@@ -27,7 +27,7 @@ export default function Header() {
   };
 
   return (
-    <nav className="bg-[#171A1D] border-b border-[#3B3B40] text-white p-4 relative z-50">
+    <nav className="bg-[#0D0F11] border-b border-[#3B3B40] text-white p-4 relative z-50">
       <div className="mx-auto flex justify-between items-center w-full px-6 md:w-10/12 md:px-0">
         <div className="flex items-center gap-2">
           <Link href="/" className="flex items-center text-[#1473CD]">
