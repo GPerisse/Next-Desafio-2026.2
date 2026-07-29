@@ -40,13 +40,13 @@ export default function Footer() {
                 <div className="flex flex-col gap-4 font-regular text-[#C0C0C0]">
                     <h3 className="font-bold tracking-wider text-[#F5F5F5] pb-3 uppercase">SIGA-NOS</h3>
                     <div className="flex gap-4">
-                        <Link href="/contato" className="p-2 border border-[#3B3B40] rounded-full hover:bg-[#1473CD] hover:text-white transition-colors flex items-center justify-center">
+                        <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 border border-[#3B3B40] rounded-full hover:bg-[#1473CD] hover:text-white transition-colors flex items-center justify-center">
                             <FaInstagram size={25} />
                         </Link>
-                        <Link href="/contato" className="p-2 border border-[#3B3B40] rounded-full hover:bg-[#1473CD] hover:text-white transition-colors flex items-center justify-center">
+                        <Link href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 border border-[#3B3B40] rounded-full hover:bg-[#1473CD] hover:text-white transition-colors flex items-center justify-center">
                             <FaFacebookF size={25} />
                         </Link>
-                        <Link href="/contato" className="p-2 border border-[#3B3B40] rounded-full hover:bg-[#1473CD] hover:text-white transition-colors flex items-center justify-center">
+                        <Link href="https://x.com" target="_blank" rel="noopener noreferrer" className="p-2 border border-[#3B3B40] rounded-full hover:bg-[#1473CD] hover:text-white transition-colors flex items-center justify-center">
                             <FaXTwitter size={25} />
                         </Link>
                     </div>

@@ -55,13 +55,13 @@ export default function ContatoPage() {
                         <div className="w-full h-0.5 bg-[#3B3B40] my-8"></div>
                         <h3 className=" font-bold mb-6">Siga nossas Redes Sociais</h3>
                         <div className="flex gap-4">
-                        <Link href="/contato" className="w-12 h-12 bg-[#0D0F11] border border-[#3B3B40] rounded-lg hover:bg-[#1473CD] hover:text-white transition-colors flex items-center justify-center">
+                        <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-[#0D0F11] border border-[#3B3B40] rounded-lg hover:bg-[#1473CD] hover:text-white transition-colors flex items-center justify-center">
                             <FaInstagram size={20} />
                         </Link>
-                        <Link href="/contato" className="w-12 h-12 bg-[#0D0F11] border border-[#3B3B40] rounded-lg hover:bg-[#1473CD] hover:text-white transition-colors flex items-center justify-center">
+                        <Link href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-[#0D0F11] border border-[#3B3B40] rounded-lg hover:bg-[#1473CD] hover:text-white transition-colors flex items-center justify-center">
                             <FaFacebookF size={20} />
                         </Link>
-                        <Link href="/contato" className="w-12 h-12 bg-[#0D0F11] border border-[#3B3B40] rounded-lg hover:bg-[#1473CD] hover:text-white transition-colors flex items-center justify-center">
+                        <Link href="https://x.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-[#0D0F11] border border-[#3B3B40] rounded-lg hover:bg-[#1473CD] hover:text-white transition-colors flex items-center justify-center">
                             <FaXTwitter size={20} />
                         </Link>
                         </div>
