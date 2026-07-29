@@ -3,6 +3,10 @@ import Link from "next/link";
 import { MapPin, Phone, Mail} from "lucide-react";
 import { FaInstagram, FaFacebookF, FaXTwitter } from "react-icons/fa6";
 export default function ContatoPage() {
+  const handleCopy = (text: string, label: string) => {
+    navigator.clipboard.writeText(text);
+    alert(`${label} copiado para a área de transferência!`);
+  };  
   return (
     <div className="w-full bg-[#0D0F11] min-h-screen py-16 text-[#F5F5F5] flex justify-center">
         <div className="w-full px-6 md:w-10/12 md:px-0 max-w-6xl">
@@ -32,22 +36,22 @@ export default function ContatoPage() {
                         <h2 className="text-xl font-bold mb-6">Nossos Contatos</h2>
                         <div>
                             <div className="flex flex-col gap-6">
-                                <div className="flex items-center gap-4">
+                                <div onClick={() => handleCopy("(32) 99999-9999", "Telefone")} className="flex items-center gap-4">
                                     <div className="w-13 h-13 rounded-lg bg-[#0D0F11] border border-[#2A2E33] flex items-center justify-center">
-                                    <Phone size={20} className="text-[#073968]" />
+                                        <Phone size={20} className="text-[#073968]" />
                                     </div>
                                     <div>
-                                    <h3 className="font-bold text-[#F5F5F5]">Telefone / WhatsApp</h3>
-                                    <p className="text-[#C0C0C0]">(32) 99999-9999</p>
+                                        <h3 className="font-bold text-[#F5F5F5]">Telefone / WhatsApp</h3>
+                                        <p className="text-[#C0C0C0] cursor-pointer  hover:text-white transition-colors">(32) 99999-9999</p>
                                     </div>
                                 </div>
-                                <div className="flex items-center gap-4">
+                                <div onClick={() => handleCopy("contato@geekpop.com.br", "E-mail")} className="flex items-center gap-4">
                                     <div className="w-13 h-13 rounded-lg bg-[#0D0F11] border border-[#2A2E33] flex items-center justify-center">
-                                    <Mail size={20} className="text-[#073968]" />
+                                        <Mail size={20} className="text-[#073968]" />
                                     </div>
                                     <div>
-                                    <h3 className="font-bold text-[#F5F5F5]">E-mail</h3>
-                                    <p className="text-[#C0C0C0]">contato@geekpop.com.br</p>
+                                        <h3 className="font-bold text-[#F5F5F5]">E-mail</h3>
+                                        <p className="text-[#C0C0C0] cursor-pointer  hover:text-white transition-colors">contato@geekpop.com.br</p>
                                     </div>
                                 </div>
                             </div>

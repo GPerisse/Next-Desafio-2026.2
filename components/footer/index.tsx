@@ -9,7 +9,10 @@ export default function Footer() {
     if (pathname === "/login") {
     return null;
     }
-
+    const handleCopy = (text: string, label: string) => {
+    navigator.clipboard.writeText(text);
+    alert(`${label} copiado para a área de transferência!`);
+    }; 
     return (
         <footer className="bg-[#0D0F11] border-t border-[#3B3B40] p-8 text-white mt-auto">
         <div className="mx-auto w-full px-6 md:w-10/12 md:px-0 py-12">
@@ -28,13 +31,13 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col gap-4 font-regular text-[#C0C0C0]">
                     <h3 className="font-bold tracking-wider text-[#F5F5F5] pb-3">CONTATO</h3>
-                    <div onClick={() => navigator.clipboard.writeText("contato@geekpop.com.br")} className="cursor-pointer hover:text-white transition-colors group">
-                        <p className="font-bold text-[#F5F5F5] ">E-mail</p>
-                        <p>contato@geekpop.com.br</p>
-                    </div>
-                    <div onClick={() => navigator.clipboard.writeText("(32) 99999-9999")} className="cursor-pointer hover:text-white transition-colors group">
+                    <div onClick={() => handleCopy("(32) 99999-9999", "Telefone")} className="cursor-pointer hover:text-white transition-colors group">
                         <p className="font-bold text-[#F5F5F5]">Telefone</p>
                         <p>(32) 99999-9999</p>
+                    </div>
+                    <div onClick={() => handleCopy("contato@geekpop.com.br", "E-mail")} className="cursor-pointer hover:text-white transition-colors group">
+                        <p className="font-bold text-[#F5F5F5] ">E-mail</p>
+                        <p>contato@geekpop.com.br</p>
                     </div>
                 </div>
                 <div className="flex flex-col gap-4 font-regular text-[#C0C0C0]">
