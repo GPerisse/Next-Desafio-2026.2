@@ -2,11 +2,46 @@
 import Link from "next/link";
 import { MapPin, Phone, Mail} from "lucide-react";
 import { FaInstagram, FaFacebookF, FaXTwitter } from "react-icons/fa6";
+import { useForm, SubmitHandler } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FormValue, formSchema } from "@/schema/form";
+
 export default function ContatoPage() {
   const handleCopy = (text: string, label: string) => {
     navigator.clipboard.writeText(text);
     alert(`${label} copiado para a área de transferência!`);
   };  
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<FormValue>({resolver: zodResolver(formSchema), defaultValues: {
+      nome: "",
+      email: "",
+      assunto: "",
+      mensagem: ""
+    }});
+
+  const onSubmit: SubmitHandler<FormValue> = async (data) => {
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        alert("Mensagem enviada com sucesso! Em breve retornaremos.");
+        reset();
+      } else {
+        const errorData = await response.json();
+        console.error("Erro detalhado do Resend:", errorData);
+        alert("Ocorreu um erro ao enviar.");
+      }
+    } catch (error) {
+      console.error("Erro de requisição:", error);
+      alert("Ocorreu um erro inesperado.");
+    }
+  };
+
   return (
     <div className="w-full bg-[#0D0F11] min-h-screen py-16 text-[#F5F5F5] flex justify-center">
         <div className="w-full px-6 md:w-10/12 md:px-0 max-w-6xl">
@@ -16,20 +51,33 @@ export default function ContatoPage() {
             </div>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div className="bg-[#171A1D] rounded-2xl p-8 border border-[#3B3B40] flex flex-col gap-6">
-                    <h2 className="text-2xl font-bold mb-4">Envie uma Mensagem</h2>
-                    <form className="flex flex-col gap-4 ">
-                        <h3 className="">Nome</h3>
-                        <input type="text" placeholder="Seu nome completo" className="p-3 bg-[#0D0F11] rounded-lg border border-[#3B3B40]" required/>
-                        <h3 className="">Email</h3>
-                        <input type="email" placeholder="seu@email.com" className="p-3 bg-[#0D0F11] rounded-lg border border-[#3B3B40]" required/>
-                        <h3 className="">Assunto</h3>
-                        <input type="assunto" placeholder="Qual o motivo do contato?" className="p-3 bg-[#0D0F11] rounded-lg border border-[#3B3B40]" required/>
-                        <h3 className="">Mensagem</h3>
-                        <textarea placeholder="Escreva sua mensagem aqui" rows={5} className="p-3 resize-none bg-[#0D0F11] rounded-lg border border-[#3B3B40]"/>
-                    </form>
-                    <button className="w-full bg-[#05AC4B] hover:bg-[#049340] transition-colors font-bold rounded-lg py-3 mt-4 cursor-pointer">
-                        Enviar Mensagem
-                    </button>
+                    <h2 className="text-2xl font-bold mb-4">Envie uma Mensagem</h2>    
+                    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
+                        <div className="flex flex-col gap-1">
+                            <h3>Nome</h3>
+                            <input {...register("nome")} type="text" placeholder="Seu nome completo" className="p-3 bg-[#0D0F11] rounded-lg border border-[#3B3B40]" />
+                            {errors.nome && <span className="text-red-500 text-sm">{errors.nome?.message}</span>}
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <h3>Email</h3>
+                            <input {...register("email")} type="email" placeholder="seu@email.com" className="p-3 bg-[#0D0F11] rounded-lg border border-[#3B3B40]" />
+                            {errors.email && <span className="text-red-500 text-sm">{errors.email?.message}</span>}
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <h3>Assunto</h3>
+                            <input {...register("assunto")} type="text" placeholder="Qual o motivo do contato?" className="p-3 bg-[#0D0F11] rounded-lg border border-[#3B3B40]" />
+                            {errors.assunto && <span className="text-red-500 text-sm">{errors.assunto?.message}</span>}
+                        </div>
+                        <div className="flex flex-col gap-1">
+                            <h3>Mensagem</h3>
+                            <textarea {...register("mensagem")} placeholder="Escreva sua mensagem aqui" rows={5} className="p-3 resize-none bg-[#0D0F11] rounded-lg border border-[#3B3B40]" />
+                            {errors.mensagem && <span className="text-red-500 text-sm">{errors.mensagem?.message}</span>}
+                        </div>
+                        
+                        <button type="submit" className="w-full bg-[#05AC4B] hover:bg-[#049340] transition-colors font-bold rounded-lg py-3 mt-4 cursor-pointer">
+                            Enviar Mensagem
+                        </button>
+                    </form>                    
                 </div>
                 <div className="flex flex-col gap-8">
                     <div className="bg-[#1C1F22] rounded-2xl p-8 border border-[#3B3B40]">
