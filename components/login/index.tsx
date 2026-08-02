@@ -55,7 +55,7 @@ export default function LoginPage() {
                             <h3>Senha</h3>
                             <div className="relative w-full">
                                 <input type={showLoginPassword ? "text" : "password"} placeholder="*******" className="p-3 bg-[#0D0F11] rounded-lg border border-[#3B3B40] w-full pr-10" />
-                                <button type="button" onClick={() => setShowLoginPassword(!showLoginPassword)} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#C0C0C0] hover:text-white transition-colors">
+                                <button type="button" onClick={() => setShowLoginPassword(!showLoginPassword)} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#C0C0C0] hover:text-white transition-colors cursor-pointer">
                                     {showLoginPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                                 </button>
                             </div>
@@ -71,7 +71,7 @@ export default function LoginPage() {
                     <h2 className="text-3xl font-black mb-1">CADASTRO</h2>
                     <p className="text-sm text-[#C0C0C0] mb-8">
                         Faça seu cadastro ou{' '}
-                        <span onClick={() => setIsLogin(true)} className="text-[#1473CD] cursor-pointer hover:underline font-bold">
+                        <span onClick={() => setIsLogin(true)} className="text-[#05AC4B] cursor-pointer hover:underline font-bold">
                             faça login
                         </span>
                     </p>
@@ -89,7 +89,7 @@ export default function LoginPage() {
                                 <h3>Senha</h3>
                                 <div className="relative w-full">
                                     <input type={showRegisterPassword ? "text" : "password"} placeholder="*******" className="p-3 bg-[#0D0F11] rounded-lg border border-[#3B3B40] w-full pr-10" />
-                                    <button type="button" onClick={() => setShowRegisterPassword(!showRegisterPassword)} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#C0C0C0] hover:text-white transition-colors">
+                                    <button type="button" onClick={() => setShowRegisterPassword(!showRegisterPassword)} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#C0C0C0] hover:text-white transition-colors cursor-pointer">
                                         {showRegisterPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                                     </button>
                                 </div>
@@ -98,7 +98,7 @@ export default function LoginPage() {
                                 <h3>Confirmar</h3>
                                 <div className="relative w-full">
                                     <input type={showConfirmPassword ? "text" : "password"} placeholder="*******" className="p-3 bg-[#0D0F11] rounded-lg border border-[#3B3B40] w-full pr-10" />
-                                    <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#C0C0C0] hover:text-white transition-colors">
+                                    <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#C0C0C0] hover:text-white transition-colors cursor-pointer">
                                         {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                                     </button>
                                 </div>
