@@ -17,10 +17,15 @@ export default function Footer() {
         <footer className="bg-[#0D0F11] border-t border-[#3B3B40] p-8 text-white mt-auto">
         <div className="mx-auto w-full px-6 md:w-10/12 md:px-0 py-12">
             <div className="flex flex-col lg:flex-row justify-between gap-12 lg:gap-8">
-                <div className="flex flex-col gap-4 max-w-xs">
-                    <Link href="/" className="flex items-center gap-2 text-2xl font-black tracking-tight">
-                        <Package size={30} className="text-[#1473CD]" /> GEEK <span className="text-[#1473CD]">POP</span>
-                    </Link>
+                <div className="flex flex-col gap-2 max-w-xs">
+                    <div className="flex items-center gap-2 mb-4">
+                        <Link href="/" className="flex items-center text-[#1473CD]">
+                            <Package size={30} />
+                        </Link>
+                        <Link href="/" className="text-2xl font-black tracking-tight flex">
+                            GEEK <span className="text-[#1473CD]">POP</span>
+                        </Link>        
+                    </div>
                     <p className="font-regular text-[#C0C0C0]">A sua loja definitiva de cultura pop e colecionáveis.</p>       
                 </div>
                 <div className="flex flex-col gap-4 font-regular text-[#C0C0C0]">
