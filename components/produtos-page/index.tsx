@@ -12,16 +12,18 @@ export default function ProdutosPage() {
             nome: "Ezio Auditore",
             franquia: "Games",
             descricao: "Traga a lenda da Irmandade dos Assassinos para a sua coleção! O Funko Pop do Ezio Auditore captura com perfeição os detalhes do traje icônico visto no jogo.",
-            preco: 179.90,
-            imagem: "/ezio.png" 
+            preco: 229.90,
+            imagem: "/ezio.png",
+            vendas: 342
         },
         {
             id: 2,
             nome: "Batman (The Dark Knight)",
             franquia: "DC Comics",
             descricao: "Boneco Funko Pop detalhado com a armadura clássica do Cavaleiro das Trevas.",
-            preco: 149.90,
-            imagem: "/batman.png"
+            preco: 179.90,
+            imagem: "/batman.png",
+            vendas: 220
         },
         {
             id: 3,
@@ -29,7 +31,8 @@ export default function ProdutosPage() {
             franquia: "Star Wars",
             descricao: "O lorde sith mais temido da galáxia agora na sua coleção.",
             preco: 219.90,
-            imagem: "/darthvader.png"
+            imagem: "/darthvader.png",
+            vendas: 189
         },
         {
             id: 4,
@@ -37,31 +40,35 @@ export default function ProdutosPage() {
             franquia: "Animes",
             descricao: "Eleve seu ki ao máximo com esta edição incrível do Gohan preparado para a batalha.",
             preco: 199.90,
-            imagem: "/gohan.png"
+            imagem: "/gohan.png",
+            vendas: 170
         },
         {
             id: 5,
-            nome: "Gohan Super Saiyajin",
-            franquia: "Animes",
-            descricao: "Eleve seu ki ao máximo com esta edição incrível do Gohan preparado para a batalha.",
-            preco: 199.90,
-            imagem: "/gohan.png"
+            nome: "Hermione",
+            franquia: "Harry Potter",
+            descricao: "Defenda o mundo bruxo com essa edição incrivel da Hermione Granger",
+            preco: 159.90,
+            imagem: "/hermione.png",
+            vendas: 80
         },
         {
             id: 6,
-            nome: "Gohan Super Saiyajin",
-            franquia: "Animes",
-            descricao: "Eleve seu ki ao máximo com esta edição incrível do Gohan preparado para a batalha.",
-            preco: 199.90,
-            imagem: "/gohan.png"
+            nome: "Homem Aranha",
+            franquia: "Marvel",
+            descricao: "Batalhe por Nova York com nosso herói da vizinhança",
+            preco: 169.90,
+            imagem: "/homemaranha.png",
+            vendas: 95
         },
         {
             id: 7,
-            nome: "Gohan Super Saiyajin",
-            franquia: "Animes",
-            descricao: "Eleve seu ki ao máximo com esta edição incrível do Gohan preparado para a batalha.",
-            preco: 199.90,
-            imagem: "/gohan.png"
+            nome: "Max Verstappen",
+            franquia: "Esportes",
+            descricao: "Vança corridas com nosso campeão mundial Max Verstappen",
+            preco: 209.90,
+            imagem: "/max.png",
+            vendas: 190
         },
         {
             id: 8,
@@ -69,7 +76,8 @@ export default function ProdutosPage() {
             franquia: "Animes",
             descricao: "Eleve seu ki ao máximo com esta edição incrível do Gohan preparado para a batalha.",
             preco: 199.90,
-            imagem: "/gohan.png"
+            imagem: "/gohan.png",
+            vendas: 170
         },
         {
             id: 9,
@@ -77,9 +85,24 @@ export default function ProdutosPage() {
             franquia: "Animes",
             descricao: "Eleve seu ki ao máximo com esta edição incrível do Gohan preparado para a batalha.",
             preco: 199.90,
-            imagem: "/gohan.png"
+            imagem: "/gohan.png",
+            vendas: 170
         },
     ];
+        const produtosFiltrados = MOCK_PRODUTOS.filter((produto) => {
+        const bateComBusca = produto.nome.toLowerCase().includes(busca.toLowerCase()) || produto.franquia.toLowerCase().includes(busca.toLowerCase());
+        const bateComFranquia = franquia === "Todas" || produto.franquia === franquia;    
+        return bateComBusca && bateComFranquia;
+    });
+
+    produtosFiltrados.sort((a, b) => {
+        if (ordenacao === "Relevância") return b.vendas - a.vendas;
+        if (ordenacao === "Menor Preço") return a.preco - b.preco;
+        if (ordenacao === "Maior Preço") return b.preco - a.preco;
+        if (ordenacao === "A-Z") return a.nome.localeCompare(b.nome);
+        return 0;
+    });
+    const produtosPaginados = produtosFiltrados.slice(0, 8);
     return (
         <div className="w-full min-h-screen bg-[#0D0F11] text-[#F5F5F5] flex flex-col items-center py-12 px-6">
            <div className="w-full max-w-7xl flex flex-col gap-8">
@@ -97,10 +120,11 @@ export default function ProdutosPage() {
                                 <option value="Todas">Todas as Categorias</option>
                                 <option value="Star Wars">Star Wars</option>
                                 <option value="Harry Potter">Harry Potter</option>
-                                <option value="DC">DC Comics</option>
+                                <option value="DC Comics">DC Comics</option>
                                 <option value="Marvel">Marvel</option>
                                 <option value="Animes">Animes</option>
                                 <option value="Games">Games</option>
+                                <option value="Esportes">Esportes</option>
                             </select>
                             <ChevronDown size={18} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#C0C0C0] pointer-events-none" />
                         </div>
@@ -117,7 +141,7 @@ export default function ProdutosPage() {
                 </div>
                 <div className="w-full h-px bg-[#3B3B40] my-4"></div>
                 <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {MOCK_PRODUTOS.map((produto) => (
+                    {produtosPaginados.map((produto) => (
                         <ProdutoCard 
                             key={produto.id}
                             id={produto.id}
