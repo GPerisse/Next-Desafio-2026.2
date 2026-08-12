@@ -27,18 +27,15 @@ export default function ProdutoCard({ id, nome, franquia, descricao, preco, imag
                     />
                 </div>
             </div>
-
             <div className="p-6 flex flex-col grow">
                 <h2 className="text-xl font-bold text-[#F5F5F5] mb-2 truncate">
                     {franquia} - {nome}
-                </h2>
-                
+                </h2>    
                 {!minimalista && (
                     <p className="text-sm text-[#C0C0C0] mb-6 line-clamp-3">
                         {descricao}
                     </p>
                 )}
-
                 <div className="mt-auto flex flex-col gap-4">
                     <span className="text-2xl font-black text-[#F5F5F5]">
                         {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(preco)}
@@ -46,7 +43,7 @@ export default function ProdutoCard({ id, nome, franquia, descricao, preco, imag
 
                     <Link 
                         href={`/produtos/${id}`}
-                        className="w-full bg-[#1473CD] hover:bg-[#105DA8] text-white font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors"
+                        className="w-full bg-[#1473CD] hover:bg-[#105DA8] text-[#F5F5F5] font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors"
                     >
                         <Eye size={20} />
                         {minimalista ? "Ver Detalhes" : "Ver Mais"}

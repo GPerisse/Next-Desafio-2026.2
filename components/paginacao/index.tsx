@@ -16,7 +16,7 @@ export default function Paginacao({ paginaAtual, totalPaginas, onPageChange }: P
                 <ChevronLeft size={20} />
             </button>
             {paginas.map((pagina) => (
-                <button key={pagina} onClick={() => onPageChange(pagina)} className={`w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm transition-colors  ${paginaAtual === pagina ? "bg-[#1473CD] text-white border border-[#1473CD]" : "bg-[#171A1D] border border-[#3B3B40] text-[#C0C0C0] hover:bg-[#202428] cursor-pointer"}`}>
+                <button key={pagina} onClick={() => onPageChange(pagina)} className={`w-10 h-10 rounded-lg flex items-center justify-center font-bold text-sm transition-colors  ${paginaAtual === pagina ? "bg-[#1473CD] text-[#F5F5F5] border border-[#1473CD]" : "bg-[#171A1D] border border-[#3B3B40] text-[#C0C0C0] hover:bg-[#202428] cursor-pointer"}`}>
                     {pagina}
                 </button>
             ))}

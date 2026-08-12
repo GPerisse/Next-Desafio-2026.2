@@ -9,7 +9,7 @@ export default function ProdutosPage() {
     const [franquia, setFranquia] = useState("Todas");
     const [ordenacao, setOrdenacao] = useState("Mais Vendidos");
     const [paginaAtual, setPaginaAtual] = useState(1);
-        const produtosFiltrados = MOCK_PRODUTOS.filter((produto) => {
+    const produtosFiltrados = MOCK_PRODUTOS.filter((produto) => {
         const bateComBusca = produto.nome.toLowerCase().includes(busca.toLowerCase()) || produto.franquia.toLowerCase().includes(busca.toLowerCase());
         const bateComFranquia = franquia === "Todas" || produto.franquia === franquia;    
         return bateComBusca && bateComFranquia;

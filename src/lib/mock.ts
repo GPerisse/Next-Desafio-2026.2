@@ -37,7 +37,7 @@ export const MOCK_PRODUTOS = [
         },
         {
             id: 5,
-            nome: "Hermione",
+            nome: "Hermione Granger",
             franquia: "Harry Potter",
             descricao: "Defenda o mundo bruxo com essa edição incrivel da Hermione Granger",
             preco: 189.90,
@@ -109,7 +109,7 @@ export const MOCK_PRODUTOS = [
         },
         {
             id: 13,
-            nome: "Naruto",
+            nome: "Naruto Uzumaki",
             franquia: "Animes",
             descricao: "Defenda a vila da folha com o maior shinobe da atualidade, Naruto Uzumaki",
             preco: 259.90,

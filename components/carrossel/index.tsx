@@ -17,7 +17,7 @@ export default function Carrossel(){
         .sort((a, b) => b.vendas - a.vendas)
         .slice(0, 10);
     return(
-        <section className="w-full bg-[#0D0F11] py-16 md:py-24 text-white">
+        <section className="w-full bg-[#0D0F11] py-16 md:py-24 text-[#F5F5F5]">
             <div className="mx-auto w-full px-6 md:w-10/12 md:px-0">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-10">
                     <div>
