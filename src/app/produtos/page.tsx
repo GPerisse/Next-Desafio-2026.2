@@ -1,5 +1,9 @@
-import ProdutosPage from "@/components/produtos-page";
+import ProdutosPage from "../../../components/produtos-page"; 
+import prisma  from "../../lib/db"; 
+export default async function Page() {
+    const produtosDoBanco = await prisma.product.findMany();
 
-export default function Produtos() {
-    return <ProdutosPage />;
+    return (
+        <ProdutosPage produtosIniciais={produtosDoBanco} />
+    );
 }

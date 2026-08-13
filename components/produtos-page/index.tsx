@@ -3,13 +3,24 @@ import { useState } from "react";
 import { Search, ChevronDown } from "lucide-react";
 import ProdutoCard from "../produto-card";
 import Paginacao from "../paginacao";
-import { MOCK_PRODUTOS } from "../../src/lib/mock";
-export default function ProdutosPage() {
+interface Produto {
+    id: number;
+    nome: string;
+    franquia: string;
+    descricao: string;
+    preco: number;
+    imagem: string;
+    vendas: number;
+}
+interface ProdutosPageProps {
+    produtosIniciais: Produto[];
+}
+export default function ProdutosPage({ produtosIniciais }: ProdutosPageProps) {
     const [busca, setBusca] = useState("");
     const [franquia, setFranquia] = useState("Todas");
     const [ordenacao, setOrdenacao] = useState("Mais Vendidos");
     const [paginaAtual, setPaginaAtual] = useState(1);
-    const produtosFiltrados = MOCK_PRODUTOS.filter((produto) => {
+    const produtosFiltrados = produtosIniciais.filter((produto) => {
         const bateComBusca = produto.nome.toLowerCase().includes(busca.toLowerCase()) || produto.franquia.toLowerCase().includes(busca.toLowerCase());
         const bateComFranquia = franquia === "Todas" || produto.franquia === franquia;    
         return bateComBusca && bateComFranquia;
@@ -28,6 +39,7 @@ export default function ProdutosPage() {
     const indexInicial = (paginaAtual - 1) * itensPorPagina;
     const indexFinal = indexInicial + itensPorPagina;
     const produtosPaginados = produtosFiltrados.slice(indexInicial, indexFinal);
+
     return (
         <div className="w-full min-h-screen bg-[#0D0F11] text-[#F5F5F5] flex flex-col items-center py-12 px-6">
            <div className="w-full max-w-7xl flex flex-col gap-8">

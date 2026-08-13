@@ -1,29 +1,33 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ShoppingCart, ChevronLeft } from "lucide-react";
-import { MOCK_PRODUTOS } from "../../src/lib/mock";
 import ProdutoCard from "../produto-card";
 
-interface ProdutoIndividualProps {
-    id: string;
+interface Produto {
+    id: number;
+    nome: string;
+    franquia: string;
+    descricao: string;
+    preco: number;
+    imagem: string;
+    vendas: number;
 }
-export default function ProdutoIndividual({ id }: ProdutoIndividualProps) {
-    const produto = MOCK_PRODUTOS.find((p) => p.id.toString() === id);
+interface ProdutoIndividualProps {
+    produto: Produto | null;
+    produtosRelacionados: Produto[];
+}
 
+export default function ProdutoIndividual({ produto, produtosRelacionados }: ProdutoIndividualProps) {
     if (!produto) {
         return (
             <div className="flex flex-col items-center justify-center py-20">
                 <h1 className="text-3xl font-bold mb-4">Produto não encontrado</h1>
-                <p className="mb-4 text-[#C0C0C0]">
-                    O sistema tentou procurar o ID: <span className="font-bold text-[#1473CD]">{id}</span>
-                </p>
+                <p className="mb-4 text-[#C0C0C0]">O sistema não encontrou este ID.</p>
                 <Link href="/produtos" className="text-[#1473CD] hover:underline">Voltar para a loja</Link>
             </div>
         );
     }
-    const produtosRelacionados = MOCK_PRODUTOS
-        .filter((p) => p.franquia === produto.franquia && p.id !== produto.id)
-        .slice(0, 4);
+
     return (
         <div className="max-w-6xl mx-auto">
             <Link href="/produtos" className="inline-flex items-center gap-2 text-[#C0C0C0] hover:text-white transition-colors mb-10">
@@ -34,7 +38,7 @@ export default function ProdutoIndividual({ id }: ProdutoIndividualProps) {
                 <div className="bg-[#1C1F22] border border-[#2A2E33] rounded-2xl w-full h-100 md:h-125 flex items-center justify-center p-8 relative">
                     <Image 
                         src={produto.imagem} 
-                        alt={`Funko Pop ${produto.franquia} ${produto.nome}`}
+                        alt={produto.nome}
                         width={400}
                         height={400}
                         className="object-contain w-full h-full drop-shadow-2xl"
@@ -43,10 +47,10 @@ export default function ProdutoIndividual({ id }: ProdutoIndividualProps) {
                 <div className="flex flex-col justify-center items-start">
                     <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight mb-4 leading-tight">
                         {produto.franquia} - {produto.nome}
-                    </h1>
+                    </h1>                   
                     <p className="text-4xl md:text-5xl font-black text-white mb-2">
                         {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(produto.preco)}
-                    </p>                    
+                    </p>                   
                     <p className="text-sm text-[#C0C0C0] mb-8">
                         Em até 3x de {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(produto.preco / 3)} sem juros
                     </p>
@@ -65,7 +69,7 @@ export default function ProdutoIndividual({ id }: ProdutoIndividualProps) {
                 <section className="mt-20 pt-10 border-t border-[#2A2E33]">
                     <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-8">
                         Produtos Relacionados
-                    </h2> 
+                    </h2>                   
                     <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                         {produtosRelacionados.map((relacionado) => (
                             <ProdutoCard 

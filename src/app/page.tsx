@@ -1,11 +1,16 @@
 import Carrossel from "@/components/carrossel";
 import HeroSection from "@/components/herosection";
 import QuemSomos from "@/components/quemsomos";
-export default function Home() {
+import prisma from "../lib/db";
+export default async function Home() {
+  const destaques = await prisma.product.findMany({
+        orderBy: { vendas: 'desc' },
+        take: 10
+    });
   return (
     <div>
       <HeroSection/>
-      <Carrossel/>
+      <Carrossel produtos={destaques}/>
       <QuemSomos/>
     </div>
   );
