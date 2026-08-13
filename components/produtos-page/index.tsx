@@ -1,8 +1,8 @@
 "use client";
-import { useState } from "react";
 import { Search, ChevronDown } from "lucide-react";
 import ProdutoCard from "../produto-card";
 import Paginacao from "../paginacao";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 interface Produto {
     id: number;
     nome: string;
@@ -12,34 +12,32 @@ interface Produto {
     imagem: string;
     vendas: number;
 }
+
 interface ProdutosPageProps {
     produtosIniciais: Produto[];
+    totalPaginas: number;
+    paginaAtual: number;
 }
-export default function ProdutosPage({ produtosIniciais }: ProdutosPageProps) {
-    const [busca, setBusca] = useState("");
-    const [franquia, setFranquia] = useState("Todas");
-    const [ordenacao, setOrdenacao] = useState("Mais Vendidos");
-    const [paginaAtual, setPaginaAtual] = useState(1);
-    const produtosFiltrados = produtosIniciais.filter((produto) => {
-        const bateComBusca = produto.nome.toLowerCase().includes(busca.toLowerCase()) || produto.franquia.toLowerCase().includes(busca.toLowerCase());
-        const bateComFranquia = franquia === "Todas" || produto.franquia === franquia;    
-        return bateComBusca && bateComFranquia;
-    });
 
-    produtosFiltrados.sort((a, b) => {
-        if (ordenacao === "Mais Vendidos") return b.vendas - a.vendas;
-        if (ordenacao === "Menor Preço") return a.preco - b.preco;
-        if (ordenacao === "Maior Preço") return b.preco - a.preco;
-        if (ordenacao === "A-Z") return a.nome.localeCompare(b.nome);
-        return 0;
-    })
-
-    const itensPorPagina = 8;
-    const totalPaginas = Math.ceil(produtosFiltrados.length / itensPorPagina);
-    const indexInicial = (paginaAtual - 1) * itensPorPagina;
-    const indexFinal = indexInicial + itensPorPagina;
-    const produtosPaginados = produtosFiltrados.slice(indexInicial, indexFinal);
-
+export default function ProdutosPage({ produtosIniciais, totalPaginas, paginaAtual }: ProdutosPageProps) {
+    const router = useRouter();
+    const searchParams = useSearchParams();
+    const pathname = usePathname();
+    const buscaAtual = searchParams.get("busca") || "";
+    const franquiaAtual = searchParams.get("franquia") || "Todas";
+    const ordenacaoAtual = searchParams.get("ordenacao") || "Mais Vendidos";
+    const handleFilterChange = (chave: string, valor: string | number) => {
+        const params = new URLSearchParams(searchParams.toString());
+        if (valor && valor !== "Todas" && valor !== "") {
+            params.set(chave, valor.toString());
+        } else {
+            params.delete(chave);
+        }
+        if (chave !== 'pagina') {
+            params.set('pagina', '1');
+        }
+        router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+    };
     return (
         <div className="w-full min-h-screen bg-[#0D0F11] text-[#F5F5F5] flex flex-col items-center py-12 px-6">
            <div className="w-full max-w-7xl flex flex-col gap-8">
@@ -49,11 +47,21 @@ export default function ProdutosPage({ produtosIniciais }: ProdutosPageProps) {
                     </h1>
                     <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto">
                         <div className="relative w-full md:w-64">
-                            <input type="text" placeholder="Pesquisar Funko..." value={busca} onChange={(e) => {setBusca(e.target.value); setPaginaAtual(1);}} className="w-full bg-[#171A1D] border border-[#3B3B40] rounded-lg py-3 pl-4 pr-10 text-sm focus:outline-none focus:border-[#1473CD] transition-colors"/>
+                            <input 
+                                type="text" 
+                                placeholder="Pesquisar Funko..." 
+                                defaultValue={buscaAtual} 
+                                onChange={(e) => handleFilterChange('busca', e.target.value)} 
+                                className="w-full bg-[#171A1D] border border-[#3B3B40] rounded-lg py-3 pl-4 pr-10 text-sm focus:outline-none focus:border-[#1473CD] transition-colors"
+                            />
                             <Search size={18} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#C0C0C0]" />
                         </div>
                         <div className="relative w-full md:w-auto">
-                            <select value={franquia} onChange={(e) => {setFranquia(e.target.value); setPaginaAtual(1); }} className="w-full bg-[#171A1D] border border-[#3B3B40] rounded-lg py-3 pl-4 pr-10 text-sm focus:outline-none focus:border-[#1473CD] cursor-pointer appearance-none hover:bg-[#202428]">
+                            <select 
+                                value={franquiaAtual} 
+                                onChange={(e) => handleFilterChange('franquia', e.target.value)} 
+                                className="w-full bg-[#171A1D] border border-[#3B3B40] rounded-lg py-3 pl-4 pr-10 text-sm focus:outline-none focus:border-[#1473CD] cursor-pointer appearance-none hover:bg-[#202428]"
+                            >
                                 <option value="Todas">Todas as Categorias</option>
                                 <option value="Star Wars">Star Wars</option>
                                 <option value="Harry Potter">Harry Potter</option>
@@ -66,7 +74,11 @@ export default function ProdutosPage({ produtosIniciais }: ProdutosPageProps) {
                             <ChevronDown size={18} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#C0C0C0] pointer-events-none" />
                         </div>
                         <div className="relative w-full md:w-auto">
-                            <select value={ordenacao} onChange={(e) => {setOrdenacao(e.target.value); setPaginaAtual(1);}} className="w-full bg-[#171A1D] border border-[#3B3B40] rounded-lg py-3 pl-4 pr-10 text-sm focus:outline-none focus:border-[#1473CD] cursor-pointer appearance-none hover:bg-[#202428]">
+                            <select 
+                                value={ordenacaoAtual} 
+                                onChange={(e) => handleFilterChange('ordenacao', e.target.value)} 
+                                className="w-full bg-[#171A1D] border border-[#3B3B40] rounded-lg py-3 pl-4 pr-10 text-sm focus:outline-none focus:border-[#1473CD] cursor-pointer appearance-none hover:bg-[#202428]"
+                            >
                                 <option value="Mais Vendidos">Mais Vendidos</option>
                                 <option value="Menor Preço">Menor Preço</option>
                                 <option value="Maior Preço">Maior Preço</option>
@@ -78,7 +90,7 @@ export default function ProdutosPage({ produtosIniciais }: ProdutosPageProps) {
                 </div>
                 <div className="w-full h-px bg-[#3B3B40] my-4"></div>
                 <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                    {produtosPaginados.map((produto) => (
+                    {produtosIniciais.map((produto) => (
                         <ProdutoCard 
                             key={produto.id}
                             id={produto.id}
@@ -89,11 +101,16 @@ export default function ProdutosPage({ produtosIniciais }: ProdutosPageProps) {
                             imagem={produto.imagem}
                         />
                     ))}
+                    {produtosIniciais.length === 0 && (
+                        <div className="col-span-full py-12 text-center text-[#C0C0C0]">
+                            Nenhum produto encontrado.
+                        </div>
+                    )}
                 </div>
                 <Paginacao 
                     paginaAtual={paginaAtual} 
                     totalPaginas={totalPaginas} 
-                    onPageChange={(novaPagina) => setPaginaAtual(novaPagina)} 
+                    onPageChange={(novaPagina) => handleFilterChange('pagina', novaPagina)} 
                 />
             </div>
         </div>
