@@ -3,6 +3,9 @@ import Image from "next/image";
 import { Eye, Edit2, Trash2, Plus } from "lucide-react";
 import Paginacao from "../paginacao";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { useState } from "react";
+import ModalCriar from "./modais/modal-criar";
+import ModalEditar from "./modais/modal-editar";
 
 interface Produto {
     id: number;
@@ -20,6 +23,16 @@ interface GerenciamentoPageProps {
 }
 
 export default function GerenciamentoPage({ produtos, totalPaginas, paginaAtual }: GerenciamentoPageProps) {
+    const [modalAberto, setModalAberto] = useState<'criar' | 'editar' | null>(null);
+    const [produtoSelecionado, setProdutoSelecionado] = useState<Produto | null>(null);
+    const handleAbrirEditar = (produto: Produto) => {
+        setProdutoSelecionado(produto);
+        setModalAberto('editar');
+    };
+    const handleFecharModal = () => {
+        setModalAberto(null);
+        setProdutoSelecionado(null);
+    };
     const router = useRouter();
     const searchParams = useSearchParams();
     const pathname = usePathname();
@@ -33,7 +46,7 @@ export default function GerenciamentoPage({ produtos, totalPaginas, paginaAtual 
         <div className="w-full max-w-6xl mx-auto">
             <div className="flex items-center justify-between gap-4 mb-8">
                 <h1 className="text-lg md:text-3xl font-black tracking-tight">GERENCIAMENTO DE PRODUTOS</h1>
-                <button className="bg-[#05AC4B] hover:bg-[#048b3c] text-white font-bold p-2 md:py-3 md:px-6 rounded-lg transition-colors flex items-center justify-center gap-2 cursor-pointer">
+                <button onClick={() => setModalAberto('criar')} className="bg-[#05AC4B] hover:bg-[#048b3c] text-white font-bold p-2 md:py-3 md:px-6 rounded-lg transition-colors flex items-center justify-center gap-2 cursor-pointer">
                     <Plus size={24} />
                     <span className="hidden md:block">Criar Produto</span>
                 </button>
@@ -71,7 +84,7 @@ export default function GerenciamentoPage({ produtos, totalPaginas, paginaAtual 
                                         <button className="p-2 border border-[#3B3B40] rounded-md text-[#C0C0C0] hover:text-white hover:bg-[#3B3B40] transition-colors cursor-pointer" title="Visualizar">
                                             <Eye size={16} />
                                         </button>
-                                        <button className="p-2 border border-[#3B3B40] rounded-md text-[#1473CD] hover:text-white hover:bg-[#1473CD] transition-colors cursor-pointer" title="Editar">
+                                        <button onClick={() => handleAbrirEditar(produto)} className="p-2 border border-[#3B3B40] rounded-md text-[#1473CD] hover:text-white hover:bg-[#1473CD] transition-colors cursor-pointer" title="Editar">
                                             <Edit2 size={16} />
                                         </button>
                                         <button className="p-2 border border-[#3B3B40] rounded-md text-[#E11D48] hover:text-white hover:bg-[#E11D48] transition-colors cursor-pointer" title="Excluir">
@@ -89,6 +102,13 @@ export default function GerenciamentoPage({ produtos, totalPaginas, paginaAtual 
                 totalPaginas={totalPaginas} 
                 onPageChange={handlePageChange} 
             />
+            {modalAberto === 'criar' && (
+                <ModalCriar fecharModal={handleFecharModal} />
+            )}
+
+            {modalAberto === 'editar' && produtoSelecionado && (
+                <ModalEditar fecharModal={handleFecharModal} produto={produtoSelecionado} />
+            )}        
         </div>
     );
 }
