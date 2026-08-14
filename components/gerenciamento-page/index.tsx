@@ -31,11 +31,11 @@ export default function GerenciamentoPage({ produtos, totalPaginas, paginaAtual 
 
     return (
         <div className="w-full max-w-6xl mx-auto">
-            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
-                <h1 className="text-3xl font-black tracking-tight">GERENCIAMENTO DE PRODUTOS</h1>
-                <button className="bg-[#05AC4B] hover:bg-[#048b3c] text-white font-bold py-3 px-6 rounded-lg transition-colors flex items-center justify-center gap-2 w-full md:w-auto cursor-pointer">
-                    <Plus size={20} />
-                    Criar Produto
+            <div className="flex items-center justify-between gap-4 mb-8">
+                <h1 className="text-lg md:text-3xl font-black tracking-tight">GERENCIAMENTO DE PRODUTOS</h1>
+                <button className="bg-[#05AC4B] hover:bg-[#048b3c] text-white font-bold p-2 md:py-3 md:px-6 rounded-lg transition-colors flex items-center justify-center gap-2 cursor-pointer">
+                    <Plus size={24} />
+                    <span className="hidden md:block">Criar Produto</span>
                 </button>
             </div>
             <div className="w-full overflow-x-auto bg-[#171A1D] border border-[#3B3B40] rounded-lg mb-8">
