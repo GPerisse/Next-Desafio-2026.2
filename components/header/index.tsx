@@ -4,10 +4,12 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ShoppingCart, Package, Menu, X} from "lucide-react";
+import { useCart } from "@/contexts/CartContext";
 
 export default function Header() {
   const pathname = usePathname();
   const [isNavOpen, setIsNavOpen] = useState(false);
+  const { quantidadeTotal } = useCart();
 
   if (pathname === "/gerenciamento" || pathname === "/login") {
     return null;
@@ -45,7 +47,18 @@ export default function Header() {
               href={link.href} 
               className={`hover:text-[#1473CD] ${pathname === link.href ? "text-[#1473CD]" : ""}`}
             >
-              {link.isCart ? <ShoppingCart size={22} /> : link.label}
+              {link.isCart ? (
+              <div className="relative flex items-center justify-center">
+                  <ShoppingCart size={22} />
+                  {quantidadeTotal > 0 && (
+                      <span className="absolute -top-1.5 -right-2 bg-[#1473CD] text-[#F5F5F5] text-[10px] font-bold w-4 h-4 flex items-center justify-center rounded-full">
+                          {quantidadeTotal}
+                      </span>
+                  )}
+              </div>
+          ) : (
+              link.label
+          )}
             </Link>
           ))}
         </div>

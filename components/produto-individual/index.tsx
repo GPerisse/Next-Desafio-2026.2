@@ -1,7 +1,9 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
 import { ShoppingCart, ChevronLeft } from "lucide-react";
 import ProdutoCard from "../produto-card";
+import { useCart } from "@/contexts/CartContext";
 
 interface Produto {
     id: number;
@@ -18,6 +20,7 @@ interface ProdutoIndividualProps {
 }
 
 export default function ProdutoIndividual({ produto, produtosRelacionados }: ProdutoIndividualProps) {
+    const { adicionarAoCarrinho } = useCart();
     if (!produto) {
         return (
             <div className="flex flex-col items-center justify-center py-20">
@@ -27,6 +30,16 @@ export default function ProdutoIndividual({ produto, produtosRelacionados }: Pro
             </div>
         );
     }
+    const handleAdicionar = () => {
+        adicionarAoCarrinho({
+            id: produto.id,
+            nome: produto.nome,
+            franquia: produto.franquia,
+            preco: produto.preco,
+            imagem: produto.imagem
+        });
+        alert("Produto adicionado ao carrinho!"); 
+    };
 
     return (
         <div className="max-w-6xl mx-auto">
@@ -54,7 +67,7 @@ export default function ProdutoIndividual({ produto, produtosRelacionados }: Pro
                     <p className="text-sm text-[#C0C0C0] mb-8">
                         Em até 3x de {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(produto.preco / 3)} sem juros
                     </p>
-                    <button className="w-full bg-[#05AC4B] hover:bg-[#059669] text-[#F5F5F5] font-bold text-lg py-4 rounded-xl flex items-center justify-center gap-3 cursor-pointer shadow-lg mb-8">
+                    <button onClick={handleAdicionar} className="w-full bg-[#05AC4B] hover:bg-[#059669] text-[#F5F5F5] font-bold text-lg py-4 rounded-xl flex items-center justify-center gap-3 cursor-pointer shadow-lg mb-8">
                         <ShoppingCart size={24} />
                         ADICIONAR AO CARRINHO
                     </button>
