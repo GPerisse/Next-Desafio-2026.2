@@ -45,7 +45,7 @@ export default function ProdutoIndividual({ produto, produtosRelacionados }: Pro
                     />
                 </div>
                 <div className="flex flex-col justify-center items-start">
-                    <h1 className="text-3xl md:text-5xl font-black uppercase tracking-tight mb-4 leading-tight">
+                    <h1 className="text-3xl md:text-5xl font-black uppercase mb-4">
                         {produto.franquia} - {produto.nome}
                     </h1>                   
                     <p className="text-4xl md:text-5xl font-black text-[#F5F5F5] mb-2">
@@ -54,20 +54,20 @@ export default function ProdutoIndividual({ produto, produtosRelacionados }: Pro
                     <p className="text-sm text-[#C0C0C0] mb-8">
                         Em até 3x de {new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(produto.preco / 3)} sem juros
                     </p>
-                    <button className="w-full bg-[#05AC4B] hover:bg-[#059669] text-white font-bold text-lg py-4 rounded-xl flex items-center justify-center gap-3 cursor-pointer shadow-lg shadow-[#10B981]/20 mb-8">
+                    <button className="w-full bg-[#05AC4B] hover:bg-[#059669] text-[#F5F5F5] font-bold text-lg py-4 rounded-xl flex items-center justify-center gap-3 cursor-pointer shadow-lg mb-8">
                         <ShoppingCart size={24} />
                         ADICIONAR AO CARRINHO
                     </button>
                     <div className="w-full h-px bg-[#2A2E33] mb-8"></div>
                     <h3 className="text-lg font-bold text-[#F5F5F5] mb-3">Descrição do Produto</h3>
-                    <p className="text-[#C0C0C0] leading-relaxed mb-10">
+                    <p className="text-[#C0C0C0] mb-10">
                         {produto.descricao}! Celebre sua paixão pela cultura pop com os Bonecos Funko Pop! Ícones do colecionismo, os Bonecos Funko Pop! conquistaram fãs no mundo todo com seu visual marcante de cabeça grande e corpo pequeno. Feitos em vinil de alta qualidade, eles trazem à vida personagens de filmes, séries, quadrinhos, animes, games e muito mais. Seja qual for o seu universo favorito, existe um Funko perfeito para expressar sua personalidade e paixão pela cultura pop. Comece ou expanda sua coleção agora mesmo!
                     </p>
                 </div>
             </div>
             {produtosRelacionados.length > 0 && (
                 <section className="mt-20 pt-10 border-t border-[#2A2E33]">
-                    <h2 className="text-2xl md:text-3xl font-black uppercase tracking-tight mb-8">
+                    <h2 className="text-2xl md:text-3xl font-black uppercase mb-8">
                         Produtos Relacionados
                     </h2>                   
                     <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

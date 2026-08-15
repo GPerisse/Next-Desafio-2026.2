@@ -37,10 +37,10 @@ export default function ModalCriar({ fecharModal }: ModalCriarProps) {
                     </div>
                 </div>
                 <div className="flex items-center justify-end gap-4 p-6 border-t border-[#3B3B40]">
-                    <button onClick={fecharModal} className="px-6 py-2 rounded-lg border border-[#3B3B40] text-[#C0C0C0] font-bold hover:bg-[#202428] cursor-pointer">
+                    <button onClick={fecharModal} className="px-6 py-3 rounded-lg border border-[#3B3B40] text-[#C0C0C0] font-bold hover:bg-[#202428] cursor-pointer">
                         Cancelar
                     </button>
-                    <button className="px-6 py-2 rounded-lg bg-[#1473CD] hover:bg-[#105CA8] text-white font-bold cursor-pointer">
+                    <button className="px-6 py-3 rounded-lg bg-[#1473CD] hover:bg-[#105CA8] text-white font-bold cursor-pointer">
                         Salvar
                     </button>
                 </div>

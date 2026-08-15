@@ -17,7 +17,7 @@ export default function ProdutoCard({ id, nome, franquia, descricao, preco, imag
         <div className="w-full bg-[#171A1D] border border-[#3B3B40] rounded-2xl overflow-hidden flex flex-col group hover:border-[#1473CD] duration-300">
             
             <div className="relative w-full h-64 bg-[#202428] flex items-center justify-center p-4">
-                <div className="relative w-full h-full transform group-hover:scale-105 transition-transform duration-500">
+                <div className="relative w-full h-full transition-transform duration-300 hover:scale-105">
                     <Image 
                         src={imagem} 
                         alt={nome} 

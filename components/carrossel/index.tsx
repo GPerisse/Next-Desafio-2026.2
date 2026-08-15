@@ -31,7 +31,7 @@ export default function Carrossel({ produtos }: CarrosselProps) {
             <div className="max-w-7xl mx-auto w-full px-6 md:px-0">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
                     <div>
-                        <h2 className="text-3xl md:text-4xl font-black uppercase tracking-tight">Principais Produtos</h2>
+                        <h2 className="text-3xl md:text-4xl font-black uppercase">Principais Produtos</h2>
                         <p className="text-[#C0C0C0] mt-2">Destaques e favoritos da comunidade</p>
                     </div>           
                     <div className="hidden md:flex gap-4">
@@ -46,7 +46,7 @@ export default function Carrossel({ produtos }: CarrosselProps) {
                 <div className="embla overflow-hidden" ref={emblaRef}>
                     <div className="embla__container flex gap-6">
                         {produtos.map((produto) => (
-                            <div key={produto.id} className="embla__slide flex-[0_0_100%] md:flex-[0_0_50%] lg:flex-[0_0_25%] min-w-0 pl-6">
+                            <div key={produto.id} className="embla__slide w-full md:w-1/2 lg:w-1/4 flex-none min-w-0 pl-6">
                                 <ProdutoCard 
                                     id={produto.id}
                                     nome={produto.nome}

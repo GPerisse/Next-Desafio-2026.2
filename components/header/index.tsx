@@ -33,7 +33,7 @@ export default function Header() {
           <Link href="/" className="flex items-center text-[#1473CD]">
             <Package size={30} />
           </Link>
-          <Link href="/" className="text-2xl font-black tracking-tight flex">
+          <Link href="/" className="text-2xl font-black flex">
             GEEK <span className="text-[#1473CD]">POP</span>
           </Link>        
         </div>
@@ -74,7 +74,7 @@ export default function Header() {
                 key={index} 
                 href={link.href} 
                 onClick={toggleNav}
-                className={`transition-colors ${pathname === link.href ? "text-[#1473CD]" : "text-[#C0C0C0] hover:text-[#F5F5F5]"}`}
+                className={`${pathname === link.href ? "text-[#1473CD]" : "text-[#C0C0C0] hover:text-[#F5F5F5]"}`}
               >
                 {link.label} 
               </Link>

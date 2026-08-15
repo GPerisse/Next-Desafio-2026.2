@@ -42,7 +42,7 @@ export default function ProdutosPage({ produtosIniciais, totalPaginas, paginaAtu
         <div className="w-full min-h-screen bg-[#0D0F11] text-[#F5F5F5] flex flex-col items-center py-12 px-6">
            <div className="w-full max-w-7xl flex flex-col gap-8">
                 <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-                    <h1 className="text-3xl md:text-4xl font-black tracking-tight">
+                    <h1 className="text-3xl md:text-4xl font-black">
                         TODOS OS PRODUTOS
                     </h1>
                     <div className="flex flex-col md:flex-row gap-4 w-full md:w-auto">

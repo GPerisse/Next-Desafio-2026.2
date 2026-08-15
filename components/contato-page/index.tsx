@@ -90,7 +90,7 @@ export default function ContatoPage() {
                                     </div>
                                     <div>
                                         <h3 className="font-bold text-[#F5F5F5]">Telefone / WhatsApp</h3>
-                                        <p className="text-[#C0C0C0] cursor-pointer  hover:text-white">(32) 99999-9999</p>
+                                        <p className="text-[#C0C0C0] cursor-pointer  hover:text-[#F5F5F5]">(32) 99999-9999</p>
                                     </div>
                                 </div>
                                 <div onClick={() => handleCopy("contato@geekpop.com.br", "E-mail")} className="flex items-center gap-4">
@@ -99,7 +99,7 @@ export default function ContatoPage() {
                                     </div>
                                     <div>
                                         <h3 className="font-bold text-[#F5F5F5]">E-mail</h3>
-                                        <p className="text-[#C0C0C0] cursor-pointer  hover:text-white ">contato@geekpop.com.br</p>
+                                        <p className="text-[#C0C0C0] cursor-pointer  hover:text-[#F5F5F5] ">contato@geekpop.com.br</p>
                                     </div>
                                 </div>
                             </div>
@@ -107,13 +107,13 @@ export default function ContatoPage() {
                         <div className="w-full h-0.5 bg-[#3B3B40] my-8"></div>
                         <h3 className=" font-bold mb-6">Siga nossas Redes Sociais</h3>
                         <div className="flex gap-4">
-                        <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-[#0D0F11] border border-[#3B3B40] rounded-lg hover:bg-[#1473CD] hover:text-white flex items-center justify-center">
+                        <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-[#0D0F11] border border-[#3B3B40] rounded-lg hover:bg-[#1473CD] hover:text-[#F5F5F5] flex items-center justify-center">
                             <FaInstagram size={20} />
                         </Link>
-                        <Link href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-[#0D0F11] border border-[#3B3B40] rounded-lg hover:bg-[#1473CD] hover:text-white flex items-center justify-center">
+                        <Link href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-[#0D0F11] border border-[#3B3B40] rounded-lg hover:bg-[#1473CD] hover:text-[#F5F5F5] flex items-center justify-center">
                             <FaFacebookF size={20} />
                         </Link>
-                        <Link href="https://x.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-[#0D0F11] border border-[#3B3B40] rounded-lg hover:bg-[#1473CD] hover:text-white flex items-center justify-center">
+                        <Link href="https://x.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-[#0D0F11] border border-[#3B3B40] rounded-lg hover:bg-[#1473CD] hover:text-[#F5F5F5] flex items-center justify-center">
                             <FaXTwitter size={20} />
                         </Link>
                         </div>
@@ -133,7 +133,7 @@ export default function ContatoPage() {
                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3705.0972624523015!2d-43.37452938871271!3d-21.776496398373425!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x989b9e2bea807b%3A0x7ac85ca76e3d3d1d!2sCode%20Empresa%20Jr.%20de%20Computa%C3%A7%C3%A3o!5e0!3m2!1spt-BR!2sbr!4v1785298606366!5m2!1spt-BR!2sbr" 
                                 width="100%" 
                                 height="250" 
-                                style={{ border: 0, borderRadius: "0.75rem" }} 
+                                className="border-0 rounded-xl"
                                 allowFullScreen={true} 
                                 loading="lazy" 
                                 referrerPolicy="no-referrer-when-downgrade"

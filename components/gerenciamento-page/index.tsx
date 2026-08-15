@@ -7,6 +7,7 @@ import { useState } from "react";
 import ModalCriar from "./modais/modal-criar";
 import ModalEditar from "./modais/modal-editar";
 import ModalVisualizar from "./modais/modal-visualizar";
+import ModalExlcuir from "./modais/modal-excluir";
 
 interface Produto {
     id: number;
@@ -24,7 +25,7 @@ interface GerenciamentoPageProps {
 }
 
 export default function GerenciamentoPage({ produtos, totalPaginas, paginaAtual }: GerenciamentoPageProps) {
-    const [modalAberto, setModalAberto] = useState<'criar' | 'editar' | 'visualizar' | null>(null);
+    const [modalAberto, setModalAberto] = useState<'criar' | 'editar' | 'visualizar' | 'excluir' | null>(null);
     const [produtoSelecionado, setProdutoSelecionado] = useState<Produto | null>(null);
     const handleAbrirEditar = (produto: Produto) => {
         setProdutoSelecionado(produto);
@@ -37,7 +38,11 @@ export default function GerenciamentoPage({ produtos, totalPaginas, paginaAtual 
     const handleAbrirVisualizar = (produto: Produto) => {
     setProdutoSelecionado(produto);
     setModalAberto('visualizar');
-};
+    };
+    const handleAbrirExcluir = (produto: Produto) => {
+    setProdutoSelecionado(produto);
+    setModalAberto('excluir');
+    };
     const router = useRouter();
     const searchParams = useSearchParams();
     const pathname = usePathname();
@@ -92,7 +97,7 @@ export default function GerenciamentoPage({ produtos, totalPaginas, paginaAtual 
                                         <button onClick={() => handleAbrirEditar(produto)} className="p-2 border border-[#3B3B40] rounded-md text-[#1473CD] hover:text-white hover:bg-[#1473CD] transition-colors cursor-pointer" title="Editar">
                                             <Edit2 size={16} />
                                         </button>
-                                        <button className="p-2 border border-[#3B3B40] rounded-md text-[#E11D48] hover:text-white hover:bg-[#E11D48] transition-colors cursor-pointer" title="Excluir">
+                                        <button onClick={() => handleAbrirExcluir(produto)} className="p-2 border border-[#3B3B40] rounded-md text-[#E11D48] hover:text-white hover:bg-[#E11D48] transition-colors cursor-pointer" title="Excluir">
                                             <Trash2 size={16} />
                                         </button>
                                     </div>
@@ -117,7 +122,9 @@ export default function GerenciamentoPage({ produtos, totalPaginas, paginaAtual 
             {modalAberto === 'visualizar' && produtoSelecionado && (
                 <ModalVisualizar fecharModal={handleFecharModal} produto={produtoSelecionado} />
             )}
-
+            {modalAberto === 'excluir' && produtoSelecionado && (
+                <ModalExlcuir fecharModal={handleFecharModal} produto={produtoSelecionado} />
+            )}
         </div>
     );
 }
