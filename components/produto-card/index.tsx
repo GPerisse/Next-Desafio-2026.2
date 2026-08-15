@@ -14,7 +14,7 @@ interface ProdutoCardProps {
 
 export default function ProdutoCard({ id, nome, franquia, descricao, preco, imagem, minimalista = false }: ProdutoCardProps) {
     return (
-        <div className="w-full bg-[#171A1D] border border-[#3B3B40] rounded-2xl overflow-hidden flex flex-col group hover:border-[#1473CD] transition-colors duration-300">
+        <div className="w-full bg-[#171A1D] border border-[#3B3B40] rounded-2xl overflow-hidden flex flex-col group hover:border-[#1473CD] duration-300">
             
             <div className="relative w-full h-64 bg-[#202428] flex items-center justify-center p-4">
                 <div className="relative w-full h-full transform group-hover:scale-105 transition-transform duration-500">
@@ -43,7 +43,7 @@ export default function ProdutoCard({ id, nome, franquia, descricao, preco, imag
 
                     <Link 
                         href={`/produtos/${id}`}
-                        className="w-full bg-[#1473CD] hover:bg-[#105DA8] text-[#F5F5F5] font-bold py-3 rounded-lg flex items-center justify-center gap-2 transition-colors"
+                        className="w-full bg-[#1473CD] hover:bg-[#105DA8] text-[#F5F5F5] font-bold py-3 rounded-lg flex items-center justify-center gap-2"
                     >
                         <Eye size={20} />
                         {minimalista ? "Ver Detalhes" : "Ver Mais"}

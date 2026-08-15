@@ -24,7 +24,7 @@ export default function LoginPage() {
                 <div className="absolute inset-0 bg-black/80 backdrop-blur-sm"></div>
             </div>
             <div className="absolute top-8 left-8">
-                <Link href="/" className="flex items-center gap-2 text-[#C0C0C0] hover:text-[#F5F5F5] transition-colors">
+                <Link href="/" className="flex items-center gap-2 text-[#C0C0C0] hover:text-[#F5F5F5]">
                     <ArrowLeft size={20} />
                     <span className="hidden md:inline">Voltar para a Página Inicial</span>
                 </Link>
@@ -55,14 +55,14 @@ export default function LoginPage() {
                             <h3>Senha</h3>
                             <div className="relative w-full">
                                 <input type={showLoginPassword ? "text" : "password"} placeholder="*******" className="p-3 bg-[#0D0F11] rounded-lg border border-[#3B3B40] w-full pr-10" />
-                                <button type="button" onClick={() => setShowLoginPassword(!showLoginPassword)} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#C0C0C0] hover:text-white transition-colors cursor-pointer">
+                                <button type="button" onClick={() => setShowLoginPassword(!showLoginPassword)} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#C0C0C0] hover:text-[#F5F5F5] cursor-pointer">
                                     {showLoginPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                                 </button>
                             </div>
                         </div>
                     </div>
                     <div className="pt-4">
-                        <button type="submit" className="w-full bg-[#1473CD] hover:bg-[#105DA8] transition-colors font-bold rounded-lg py-3 mt-4 cursor-pointer">
+                        <button type="submit" className="w-full bg-[#1473CD] hover:bg-[#105DA8] font-bold rounded-lg py-3 mt-4 cursor-pointer">
                             Login
                         </button>
                     </div>
@@ -89,7 +89,7 @@ export default function LoginPage() {
                                 <h3>Senha</h3>
                                 <div className="relative w-full">
                                     <input type={showRegisterPassword ? "text" : "password"} placeholder="*******" className="p-3 bg-[#0D0F11] rounded-lg border border-[#3B3B40] w-full pr-10" />
-                                    <button type="button" onClick={() => setShowRegisterPassword(!showRegisterPassword)} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#C0C0C0] hover:text-white transition-colors cursor-pointer">
+                                    <button type="button" onClick={() => setShowRegisterPassword(!showRegisterPassword)} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#C0C0C0] hover:text-white cursor-pointer">
                                         {showRegisterPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                                     </button>
                                 </div>
@@ -98,7 +98,7 @@ export default function LoginPage() {
                                 <h3>Confirmar</h3>
                                 <div className="relative w-full">
                                     <input type={showConfirmPassword ? "text" : "password"} placeholder="*******" className="p-3 bg-[#0D0F11] rounded-lg border border-[#3B3B40] w-full pr-10" />
-                                    <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#C0C0C0] hover:text-white transition-colors cursor-pointer">
+                                    <button type="button" onClick={() => setShowConfirmPassword(!showConfirmPassword)} className="absolute right-3 top-1/2 transform -translate-y-1/2 text-[#C0C0C0] hover:text-white cursor-pointer">
                                         {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
                                     </button>
                                 </div>
@@ -106,7 +106,7 @@ export default function LoginPage() {
                         </div>
                     </div>
                     <div className="pt-4">
-                        <button type="submit" className="w-full bg-[#05AC4B] hover:bg-[#049340] transition-colors font-bold rounded-lg py-3 mt-4 cursor-pointer">
+                        <button type="submit" className="w-full bg-[#05AC4B] hover:bg-[#049340] font-bold rounded-lg py-3 mt-4 cursor-pointer">
                             Cadastro
                         </button>
                     </div>

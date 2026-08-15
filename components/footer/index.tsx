@@ -30,17 +30,17 @@ export default function Footer() {
                 </div>
                 <div className="flex flex-col gap-4 font-regular text-[#C0C0C0]">
                     <h3 className="font-bold tracking-wider text-[#F5F5F5] pb-3">SOBRE NÓS</h3>
-                    <Link href="/contato" className="hover:text-white transition-colors">Fale Conosco</Link>
-                    <Link href="/" className="hover:text-white transition-colors">Política de Privacidade</Link>
-                    <Link href="/" className="hover:text-white transition-colors">Termos de Uso</Link>
+                    <Link href="/contato" className="hover:text-white">Fale Conosco</Link>
+                    <Link href="/" className="hover:text-white">Política de Privacidade</Link>
+                    <Link href="/" className="hover:text-white">Termos de Uso</Link>
                 </div>
                 <div className="flex flex-col gap-4 font-regular text-[#C0C0C0]">
                     <h3 className="font-bold tracking-wider text-[#F5F5F5] pb-3">CONTATO</h3>
-                    <div onClick={() => handleCopy("(32) 99999-9999", "Telefone")} className="cursor-pointer hover:text-white transition-colors group">
+                    <div onClick={() => handleCopy("(32) 99999-9999", "Telefone")} className="cursor-pointer hover:text-white group">
                         <p className="font-bold text-[#F5F5F5]">Telefone</p>
                         <p>(32) 99999-9999</p>
                     </div>
-                    <div onClick={() => handleCopy("contato@geekpop.com.br", "E-mail")} className="cursor-pointer hover:text-white transition-colors group">
+                    <div onClick={() => handleCopy("contato@geekpop.com.br", "E-mail")} className="cursor-pointer hover:text-white group">
                         <p className="font-bold text-[#F5F5F5] ">E-mail</p>
                         <p>contato@geekpop.com.br</p>
                     </div>
@@ -48,13 +48,13 @@ export default function Footer() {
                 <div className="flex flex-col gap-4 font-regular text-[#C0C0C0]">
                     <h3 className="font-bold tracking-wider text-[#F5F5F5] pb-3 uppercase">SIGA-NOS</h3>
                     <div className="flex gap-4">
-                        <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 border border-[#3B3B40] rounded-full hover:bg-[#1473CD] hover:text-white transition-colors flex items-center justify-center">
+                        <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="p-2 border border-[#3B3B40] rounded-full hover:bg-[#1473CD] hover:text-white flex items-center justify-center">
                             <FaInstagram size={25} />
                         </Link>
-                        <Link href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 border border-[#3B3B40] rounded-full hover:bg-[#1473CD] hover:text-white transition-colors flex items-center justify-center">
+                        <Link href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="p-2 border border-[#3B3B40] rounded-full hover:bg-[#1473CD] hover:text-white flex items-center justify-center">
                             <FaFacebookF size={25} />
                         </Link>
-                        <Link href="https://x.com" target="_blank" rel="noopener noreferrer" className="p-2 border border-[#3B3B40] rounded-full hover:bg-[#1473CD] hover:text-white transition-colors flex items-center justify-center">
+                        <Link href="https://x.com" target="_blank" rel="noopener noreferrer" className="p-2 border border-[#3B3B40] rounded-full hover:bg-[#1473CD] hover:text-white flex items-center justify-center">
                             <FaXTwitter size={25} />
                         </Link>
                     </div>

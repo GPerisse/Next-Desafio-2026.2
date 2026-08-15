@@ -21,7 +21,7 @@ export default function ModalEditar({ fecharModal, produto }: ModalEditarProps) 
             <div className="bg-[#171A1D] border border-[#3B3B40] rounded-xl w-full max-w-lg flex flex-col shadow-2xl" onClick={(e) => e.stopPropagation()} >
                 <div className="flex items-center justify-between p-6 border-b border-[#3B3B40]">
                     <h2 className="text-xl font-bold text-[#F5F5F5]">Editar Produto</h2>
-                    <button onClick={fecharModal} className="text-[#C0C0C0] hover:text-white transition-colors cursor-pointer">
+                    <button onClick={fecharModal} className="text-[#C0C0C0] hover:text-white cursor-pointer">
                         <X size={24} />
                     </button>
                 </div>
@@ -35,7 +35,7 @@ export default function ModalEditar({ fecharModal, produto }: ModalEditarProps) 
                                 </div>
                                 <span className="text-sm text-[#F5F5F5]">{produto.imagem || "Sem imagem"}</span>
                             </div>
-                            <button className="text-[#C0C0C0] hover:text-[#E11D48] transition-colors cursor-pointer" title="Remover imagem">
+                            <button className="text-[#C0C0C0] hover:text-[#E11D48] cursor-pointer" title="Remover imagem">
                                 <Trash2 size={18} />
                             </button>
                         </div>
@@ -54,10 +54,10 @@ export default function ModalEditar({ fecharModal, produto }: ModalEditarProps) 
                     </div>
                 </div>
                 <div className="flex items-center justify-end gap-4 p-6 border-t border-[#3B3B40]">
-                    <button onClick={fecharModal} className="px-6 py-2 rounded-lg border border-[#3B3B40] text-[#C0C0C0] font-bold hover:bg-[#202428] transition-colors cursor-pointer">
+                    <button onClick={fecharModal} className="px-6 py-2 rounded-lg border border-[#3B3B40] text-[#C0C0C0] font-bold hover:bg-[#202428] cursor-pointer">
                         Cancelar
                     </button>
-                    <button className="px-6 py-2 rounded-lg bg-[#1473CD] hover:bg-[#105CA8] text-white font-bold transition-colors cursor-pointer">
+                    <button className="px-6 py-2 rounded-lg bg-[#1473CD] hover:bg-[#105CA8] text-white font-bold cursor-pointer">
                         Salvar Alterações
                     </button>
                 </div>

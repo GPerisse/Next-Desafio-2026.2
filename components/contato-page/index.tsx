@@ -74,7 +74,7 @@ export default function ContatoPage() {
                             {errors.mensagem && <span className="text-red-500 text-sm">{errors.mensagem?.message}</span>}
                         </div>
                         
-                        <button type="submit" className="w-full bg-[#05AC4B] hover:bg-[#049340] transition-colors font-bold rounded-lg py-3 mt-4 cursor-pointer">
+                        <button type="submit" className="w-full bg-[#05AC4B] hover:bg-[#049340] font-bold rounded-lg py-3 mt-4 cursor-pointer">
                             Enviar Mensagem
                         </button>
                     </form>                    
@@ -90,7 +90,7 @@ export default function ContatoPage() {
                                     </div>
                                     <div>
                                         <h3 className="font-bold text-[#F5F5F5]">Telefone / WhatsApp</h3>
-                                        <p className="text-[#C0C0C0] cursor-pointer  hover:text-white transition-colors">(32) 99999-9999</p>
+                                        <p className="text-[#C0C0C0] cursor-pointer  hover:text-white">(32) 99999-9999</p>
                                     </div>
                                 </div>
                                 <div onClick={() => handleCopy("contato@geekpop.com.br", "E-mail")} className="flex items-center gap-4">
@@ -99,7 +99,7 @@ export default function ContatoPage() {
                                     </div>
                                     <div>
                                         <h3 className="font-bold text-[#F5F5F5]">E-mail</h3>
-                                        <p className="text-[#C0C0C0] cursor-pointer  hover:text-white transition-colors">contato@geekpop.com.br</p>
+                                        <p className="text-[#C0C0C0] cursor-pointer  hover:text-white ">contato@geekpop.com.br</p>
                                     </div>
                                 </div>
                             </div>
@@ -107,13 +107,13 @@ export default function ContatoPage() {
                         <div className="w-full h-0.5 bg-[#3B3B40] my-8"></div>
                         <h3 className=" font-bold mb-6">Siga nossas Redes Sociais</h3>
                         <div className="flex gap-4">
-                        <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-[#0D0F11] border border-[#3B3B40] rounded-lg hover:bg-[#1473CD] hover:text-white transition-colors flex items-center justify-center">
+                        <Link href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-[#0D0F11] border border-[#3B3B40] rounded-lg hover:bg-[#1473CD] hover:text-white flex items-center justify-center">
                             <FaInstagram size={20} />
                         </Link>
-                        <Link href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-[#0D0F11] border border-[#3B3B40] rounded-lg hover:bg-[#1473CD] hover:text-white transition-colors flex items-center justify-center">
+                        <Link href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-[#0D0F11] border border-[#3B3B40] rounded-lg hover:bg-[#1473CD] hover:text-white flex items-center justify-center">
                             <FaFacebookF size={20} />
                         </Link>
-                        <Link href="https://x.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-[#0D0F11] border border-[#3B3B40] rounded-lg hover:bg-[#1473CD] hover:text-white transition-colors flex items-center justify-center">
+                        <Link href="https://x.com" target="_blank" rel="noopener noreferrer" className="w-12 h-12 bg-[#0D0F11] border border-[#3B3B40] rounded-lg hover:bg-[#1473CD] hover:text-white flex items-center justify-center">
                             <FaXTwitter size={20} />
                         </Link>
                         </div>

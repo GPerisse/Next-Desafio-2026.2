@@ -35,10 +35,10 @@ export default function Carrossel({ produtos }: CarrosselProps) {
                         <p className="text-[#C0C0C0] mt-2">Destaques e favoritos da comunidade</p>
                     </div>           
                     <div className="hidden md:flex gap-4">
-                        <button onClick={scrollPrev} className="cursor-pointer w-10 h-10 rounded-full bg-[#1C1F22] hover:bg-[#2A2E33] flex items-center justify-center transition-colors border border-[#3B3B40]">
+                        <button onClick={scrollPrev} className="cursor-pointer w-10 h-10 rounded-full bg-[#1C1F22] hover:bg-[#2A2E33] flex items-center justify-center border border-[#3B3B40]">
                             <ChevronLeft size={20} />
                         </button>
-                        <button onClick={scrollNext} className="cursor-pointer w-10 h-10 rounded-full bg-[#1C1F22] hover:bg-[#2A2E33] flex items-center justify-center transition-colors border border-[#3B3B40]">
+                        <button onClick={scrollNext} className="cursor-pointer w-10 h-10 rounded-full bg-[#1C1F22] hover:bg-[#2A2E33] flex items-center justify-center border border-[#3B3B40]">
                             <ChevronRight size={20} />
                         </button>
                     </div>
@@ -61,10 +61,10 @@ export default function Carrossel({ produtos }: CarrosselProps) {
                     </div>
                 </div>
                 <div className="flex md:hidden justify-center gap-4 mt-10">
-                    <button onClick={scrollPrev} className="cursor-pointer w-12 h-12 rounded-full bg-[#1C1F22] hover:bg-[#2A2E33] flex items-center justify-center transition-colors border border-[#3B3B40]">
+                    <button onClick={scrollPrev} className="cursor-pointer w-12 h-12 rounded-full bg-[#1C1F22] hover:bg-[#2A2E33] flex items-center justify-center border border-[#3B3B40]">
                         <ChevronLeft size={24} />
                     </button>
-                    <button onClick={scrollNext} className="cursor-pointer w-12 h-12 rounded-full bg-[#1C1F22] hover:bg-[#2A2E33] flex items-center justify-center transition-colors border border-[#3B3B40]">
+                    <button onClick={scrollNext} className="cursor-pointer w-12 h-12 rounded-full bg-[#1C1F22] hover:bg-[#2A2E33] flex items-center justify-center border border-[#3B3B40]">
                         <ChevronRight size={24} />
                     </button>
                 </div>

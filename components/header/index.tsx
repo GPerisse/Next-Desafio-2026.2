@@ -43,7 +43,7 @@ export default function Header() {
             <Link 
               key={index} 
               href={link.href} 
-              className={`hover:text-[#1473CD] transition-colors ${pathname === link.href ? "text-[#1473CD]" : ""}`}
+              className={`hover:text-[#1473CD] ${pathname === link.href ? "text-[#1473CD]" : ""}`}
             >
               {link.isCart ? <ShoppingCart size={22} /> : link.label}
             </Link>
@@ -74,7 +74,7 @@ export default function Header() {
                 key={index} 
                 href={link.href} 
                 onClick={toggleNav}
-                className={`transition-colors ${pathname === link.href ? "text-[#1473CD]" : "text-gray-300 hover:text-white"}`}
+                className={`transition-colors ${pathname === link.href ? "text-[#1473CD]" : "text-[#C0C0C0] hover:text-[#F5F5F5]"}`}
               >
                 {link.label} 
               </Link>
@@ -82,7 +82,7 @@ export default function Header() {
           </div>
           <button 
             onClick={toggleNav} 
-            className="mt-auto text-gray-400 hover:text-white transition-colors"
+            className="mt-auto text-[#C0C0C0] hover:text-[#F5F5F5]"
           >
             <X size={45} strokeWidth={1.5} />
           </button>

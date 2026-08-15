@@ -52,7 +52,7 @@ export default function ProdutosPage({ produtosIniciais, totalPaginas, paginaAtu
                                 placeholder="Pesquisar Funko..." 
                                 defaultValue={buscaAtual} 
                                 onChange={(e) => handleFilterChange('busca', e.target.value)} 
-                                className="w-full bg-[#171A1D] border border-[#3B3B40] rounded-lg py-3 pl-4 pr-10 text-sm focus:outline-none focus:border-[#1473CD] transition-colors"
+                                className="w-full bg-[#171A1D] border border-[#3B3B40] rounded-lg py-3 pl-4 pr-10 text-sm focus:outline-none focus:border-[#1473CD]"
                             />
                             <Search size={18} className="absolute right-3 top-1/2 -translate-y-1/2 text-[#C0C0C0]" />
                         </div>

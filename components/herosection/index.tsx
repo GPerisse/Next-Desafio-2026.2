@@ -10,7 +10,7 @@ export default function HeroSection(){
                     <div className="px-4 py-1 text-sm font-bold text-[#F5F5F5] bg-[#1473CD]/30 rounded-full">SUA COLEÇÃO COMEÇA AQUI</div>
                     <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight text-[#F5F5F5]">O MAIOR <br/> CATALOGO DE <br/> <span className="text-[#FFB612]">CULTURA POP</span></h1>
                     <h3 className="text-[#C0C0C0] max-w text-lg">Descubra milhares de colecionáveis, edições limitadas e os personagens que marcaram a sua vida. Encontre exatamente o que falta na sua estante.</h3>
-                    <Link href="/produtos" className="w-full justify-center lg:w-fit mt-4 flex items-center gap-2 bg-[#05AC4B] hover:bg-[#059669] text-white font-bold py-4 px-8 rounded-md transition-colors">
+                    <Link href="/produtos" className="w-full justify-center lg:w-fit mt-4 flex items-center gap-2 bg-[#05AC4B] hover:bg-[#059669] text-white font-bold py-4 px-8 rounded-md">
                         <Package size={25} />
                         Ver Catálogo Completo
                     </Link>

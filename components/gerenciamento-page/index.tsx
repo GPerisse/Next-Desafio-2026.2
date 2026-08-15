@@ -6,6 +6,7 @@ import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useState } from "react";
 import ModalCriar from "./modais/modal-criar";
 import ModalEditar from "./modais/modal-editar";
+import ModalVisualizar from "./modais/modal-visualizar";
 
 interface Produto {
     id: number;
@@ -23,7 +24,7 @@ interface GerenciamentoPageProps {
 }
 
 export default function GerenciamentoPage({ produtos, totalPaginas, paginaAtual }: GerenciamentoPageProps) {
-    const [modalAberto, setModalAberto] = useState<'criar' | 'editar' | null>(null);
+    const [modalAberto, setModalAberto] = useState<'criar' | 'editar' | 'visualizar' | null>(null);
     const [produtoSelecionado, setProdutoSelecionado] = useState<Produto | null>(null);
     const handleAbrirEditar = (produto: Produto) => {
         setProdutoSelecionado(produto);
@@ -33,6 +34,10 @@ export default function GerenciamentoPage({ produtos, totalPaginas, paginaAtual 
         setModalAberto(null);
         setProdutoSelecionado(null);
     };
+    const handleAbrirVisualizar = (produto: Produto) => {
+    setProdutoSelecionado(produto);
+    setModalAberto('visualizar');
+};
     const router = useRouter();
     const searchParams = useSearchParams();
     const pathname = usePathname();
@@ -81,7 +86,7 @@ export default function GerenciamentoPage({ produtos, totalPaginas, paginaAtual 
                                 </td>
                                 <td className="px-6 py-4">
                                     <div className="flex items-center justify-center gap-3">
-                                        <button className="p-2 border border-[#3B3B40] rounded-md text-[#C0C0C0] hover:text-white hover:bg-[#3B3B40] transition-colors cursor-pointer" title="Visualizar">
+                                        <button onClick={() => handleAbrirVisualizar(produto)} className="p-2 border border-[#3B3B40] rounded-md text-[#C0C0C0] hover:text-white hover:bg-[#3B3B40] transition-colors cursor-pointer" title="Visualizar">
                                             <Eye size={16} />
                                         </button>
                                         <button onClick={() => handleAbrirEditar(produto)} className="p-2 border border-[#3B3B40] rounded-md text-[#1473CD] hover:text-white hover:bg-[#1473CD] transition-colors cursor-pointer" title="Editar">
@@ -97,7 +102,7 @@ export default function GerenciamentoPage({ produtos, totalPaginas, paginaAtual 
                     </tbody>
                 </table>
             </div>
-            <Paginacao 
+        <Paginacao 
                 paginaAtual={paginaAtual} 
                 totalPaginas={totalPaginas} 
                 onPageChange={handlePageChange} 
@@ -108,7 +113,11 @@ export default function GerenciamentoPage({ produtos, totalPaginas, paginaAtual 
 
             {modalAberto === 'editar' && produtoSelecionado && (
                 <ModalEditar fecharModal={handleFecharModal} produto={produtoSelecionado} />
-            )}        
+            )}    
+            {modalAberto === 'visualizar' && produtoSelecionado && (
+                <ModalVisualizar fecharModal={handleFecharModal} produto={produtoSelecionado} />
+            )}
+
         </div>
     );
 }
