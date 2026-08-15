@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header"; 
 import Footer from "@/components/footer";
+import { CartProvider } from "@/contexts/CartContext";
 
 const inter = Inter({
   weight: ["300", "400", "500", "600", "700", "800", "900"],
@@ -23,9 +24,11 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={`${inter.className} antialiased bg-[#171A1D] text-white`}>
-        <Header />
-        {children}
-        <Footer />
+        <CartProvider>
+          <Header />
+          {children}
+          <Footer />
+        </CartProvider>    
       </body>
     </html>
   );

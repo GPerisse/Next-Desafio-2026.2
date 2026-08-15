@@ -56,7 +56,7 @@ export default function GerenciamentoPage({ produtos, totalPaginas, paginaAtual 
         <div className="w-full max-w-6xl mx-auto">
             <div className="flex items-center justify-between gap-4 mb-8">
                 <h1 className="text-lg md:text-3xl font-black tracking-tight">GERENCIAMENTO DE PRODUTOS</h1>
-                <button onClick={() => setModalAberto('criar')} className="bg-[#05AC4B] hover:bg-[#048b3c] text-white font-bold p-2 md:py-3 md:px-6 rounded-lg transition-colors flex items-center justify-center gap-2 cursor-pointer">
+                <button onClick={() => setModalAberto('criar')} className="bg-[#05AC4B] hover:bg-[#048b3c] text-[#F5F5F5] font-bold p-2 md:py-3 md:px-6 rounded-lg flex items-center justify-center gap-2 cursor-pointer">
                     <Plus size={24} />
                     <span className="hidden md:block">Criar Produto</span>
                 </button>
@@ -74,7 +74,7 @@ export default function GerenciamentoPage({ produtos, totalPaginas, paginaAtual 
                     </thead>
                     <tbody>
                         {produtos.map((produto) => (
-                            <tr key={produto.id} className="border-b border-[#3B3B40] hover:bg-[#202428] transition-colors">
+                            <tr key={produto.id} className="border-b border-[#3B3B40] hover:bg-[#202428]">
                                 <td className="px-6 py-4">
                                     <div className="w-12 h-12 relative bg-[#0D0F11] border border-[#3B3B40] rounded-md overflow-hidden flex items-center justify-center">
                                         <Image src={produto.imagem || "/file.svg"} alt={produto.nome} width={40} height={40} className="object-contain" />
@@ -91,13 +91,13 @@ export default function GerenciamentoPage({ produtos, totalPaginas, paginaAtual 
                                 </td>
                                 <td className="px-6 py-4">
                                     <div className="flex items-center justify-center gap-3">
-                                        <button onClick={() => handleAbrirVisualizar(produto)} className="p-2 border border-[#3B3B40] rounded-md text-[#C0C0C0] hover:text-white hover:bg-[#3B3B40] transition-colors cursor-pointer" title="Visualizar">
+                                        <button onClick={() => handleAbrirVisualizar(produto)} className="p-2 border border-[#3B3B40] rounded-md text-[#C0C0C0] hover:text-[#F5F5F5] hover:bg-[#3B3B40] cursor-pointer" title="Visualizar">
                                             <Eye size={16} />
                                         </button>
-                                        <button onClick={() => handleAbrirEditar(produto)} className="p-2 border border-[#3B3B40] rounded-md text-[#1473CD] hover:text-white hover:bg-[#1473CD] transition-colors cursor-pointer" title="Editar">
+                                        <button onClick={() => handleAbrirEditar(produto)} className="p-2 border border-[#3B3B40] rounded-md text-[#1473CD] hover:text-[#F5F5F5] hover:bg-[#1473CD] cursor-pointer" title="Editar">
                                             <Edit2 size={16} />
                                         </button>
-                                        <button onClick={() => handleAbrirExcluir(produto)} className="p-2 border border-[#3B3B40] rounded-md text-[#E11D48] hover:text-white hover:bg-[#E11D48] transition-colors cursor-pointer" title="Excluir">
+                                        <button onClick={() => handleAbrirExcluir(produto)} className="p-2 border border-[#3B3B40] rounded-md text-[#E11D48] hover:text-[#F5F5F5] hover:bg-[#E11D48] cursor-pointer" title="Excluir">
                                             <Trash2 size={16} />
                                         </button>
                                     </div>
