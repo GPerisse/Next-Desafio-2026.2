@@ -45,7 +45,7 @@ export default function CarrinhoPage() {
                     setValorFrete(40.00); // Resto do Brasil
                 }
             }
-        } catch (error) {
+        } catch {
             setErroFrete("Erro ao consultar o CEP.");
         } finally {
             setLoadingFrete(false);

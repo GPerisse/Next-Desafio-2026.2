@@ -4,6 +4,7 @@ import { Eye, Edit2, Trash2, Plus } from "lucide-react";
 import Paginacao from "../paginacao";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useState } from "react";
+import { useEffect } from "react";
 import ModalCriar from "./modais/modal-criar";
 import ModalEditar from "./modais/modal-editar";
 import ModalVisualizar from "./modais/modal-visualizar";
@@ -25,6 +26,13 @@ interface GerenciamentoPageProps {
 }
 
 export default function GerenciamentoPage({ produtos, totalPaginas, paginaAtual }: GerenciamentoPageProps) {
+    const router = useRouter();
+    useEffect(() => {
+        const token = localStorage.getItem("token-geekpop");
+        if (!token) {
+            router.push("/login");
+        }
+    }, [router]);
     const [modalAberto, setModalAberto] = useState<'criar' | 'editar' | 'visualizar' | 'excluir' | null>(null);
     const [produtoSelecionado, setProdutoSelecionado] = useState<Produto | null>(null);
     const handleAbrirEditar = (produto: Produto) => {
@@ -43,7 +51,6 @@ export default function GerenciamentoPage({ produtos, totalPaginas, paginaAtual 
     setProdutoSelecionado(produto);
     setModalAberto('excluir');
     };
-    const router = useRouter();
     const searchParams = useSearchParams();
     const pathname = usePathname();
     const handlePageChange = (novaPagina: number) => {
