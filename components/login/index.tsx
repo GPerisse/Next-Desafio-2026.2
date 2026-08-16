@@ -42,6 +42,7 @@ export default function LoginPage() {
             const dados = await resposta.json();
             if (resposta.ok) {
                 localStorage.setItem("token-geekpop", dados.token); 
+                localStorage.setItem("nome-geekpop", dados.user.name);
                 alert("Login realizado com sucesso!");
                 router.push("/gerenciamento");
             } else {
@@ -81,6 +82,7 @@ export default function LoginPage() {
             const dados = await resposta.json();
             if (resposta.ok) {
                 localStorage.setItem("token-geekpop", dados.token); 
+                localStorage.setItem("nome-geekpop", dados.user.name);
                 alert("Cadastro realizado com sucesso!");
                 setIsLogin(true);
             } else {
