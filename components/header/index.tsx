@@ -33,7 +33,7 @@ export default function Header() {
     setIsLoggedIn(false);
     setMenuAberto(false);
     setIsNavOpen(false);
-    router.push("/login");
+    router.push("/");
   };
   if (pathname === "/gerenciamento" || pathname === "/login") {
     return null;

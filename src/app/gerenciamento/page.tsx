@@ -6,7 +6,7 @@ export default async function Page({ searchParams }: { searchParams: Promise<{ [
     const paginaAtual = Number(params.pagina) || 1;
         const { produtos, totalPaginas } = await getProdutosAdmin(paginaAtual);
     return (
-        <main className="min-h-screen bg-[#0D0F11] text-[#F5F5F5] py-12 px-6">
+        <main>
             <GerenciamentoPage 
                 produtos={produtos} 
                 totalPaginas={totalPaginas}

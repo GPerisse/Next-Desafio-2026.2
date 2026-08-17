@@ -5,7 +5,6 @@ import { Trash2, Plus, Minus } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import Link from "next/link";
 
-
 export default function CarrinhoPage() {
     const { itens, removerDoCarrinho, atualizarQuantidade } = useCart();
     const [cep, setCep] = useState("");
@@ -16,33 +15,27 @@ export default function CarrinhoPage() {
     const valorTotal = subtotal + (valorFrete || 0);
 
     const calcularFrete = async () => {
-        // Tira o traço e deixa só os números
         const cepLimpo = cep.replace(/\D/g, ''); 
         
         if (cepLimpo.length !== 8) {
             setErroFrete("CEP inválido. Digite 8 números.");
             return;
         }
-
         setLoadingFrete(true);
         setErroFrete("");
-
         try {
-            // Batendo na API pública do ViaCEP
             const response = await fetch(`https://viacep.com.br/ws/${cepLimpo}/json/`);
             const data = await response.json();
-
             if (data.erro) {
                 setErroFrete("CEP não encontrado.");
                 setValorFrete(null);
             } else {
-                // Regra de negócio (Tabela de preços fake)
                 if (data.uf === 'MG') {
-                    setValorFrete(15.00); // Mais barato para Minas
+                    setValorFrete(15.00);
                 } else if (data.uf === 'SP' || data.uf === 'RJ' || data.uf === 'ES') {
-                    setValorFrete(25.00); // Sudeste
+                    setValorFrete(25.00);
                 } else {
-                    setValorFrete(40.00); // Resto do Brasil
+                    setValorFrete(40.00); 
                 }
             }
         } catch {
@@ -51,7 +44,6 @@ export default function CarrinhoPage() {
             setLoadingFrete(false);
         }
     };
-    
     return (
         <div className="max-w-6xl mx-auto w-full">
             <h1 className="text-3xl font-black uppercase mb-8">Seu Carrinho</h1>
@@ -147,7 +139,7 @@ export default function CarrinhoPage() {
                                 <Link href="/produtos" className="w-full bg-[#C0C0C0] hover:bg-[#A7A7A7] text-[#171A1D] font-bold py-4 rounded-xl cursor-pointer flex justify-center items-center">
                                     CONTINUAR COMPRANDO
                                 </Link>
-                                <button onClick={() => alert("Compra finalizada com sucesso! (Integração de pagamento em breve)")} className="w-full bg-[#05AC4B] hover:bg-[#048B3C] text-white font-bold py-4 rounded-xl cursor-pointer">
+                                <button onClick={() => alert("Compra finalizada com sucesso!")} className="w-full bg-[#05AC4B] hover:bg-[#048B3C] text-white font-bold py-4 rounded-xl cursor-pointer">
                                     FINALIZAR COMPRA
                                 </button>
                             </div>
