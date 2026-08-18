@@ -28,7 +28,7 @@ export default function Carrossel({ produtos }: CarrosselProps) {
     }, [emblaApi]);
     return (
         <section className="w-full bg-[#0D0F11] py-16 md:py-24 text-[#F5F5F5]">
-            <div className="max-w-7xl mx-auto w-full px-6 md:px-0">
+            <div className="mx-auto w-full px-6 md:w-10/12 md:px-7">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
                     <div>
                         <h2 className="text-3xl md:text-4xl font-black uppercase">Principais Produtos</h2>
@@ -44,7 +44,7 @@ export default function Carrossel({ produtos }: CarrosselProps) {
                     </div>
                 </div>
                 <div className="embla overflow-hidden" ref={emblaRef}>
-                    <div className="embla__container flex gap-6">
+                    <div className="embla__container flex -ml-6">
                         {produtos.map((produto) => (
                             <div key={produto.id} className="embla__slide w-full md:w-1/2 lg:w-1/4 flex-none min-w-0 pl-6">
                                 <ProdutoCard 
