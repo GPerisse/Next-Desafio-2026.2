@@ -1,5 +1,7 @@
 import { X, Trash2 } from "lucide-react";
+import { useState } from "react";
 import Image from "next/image";
+import { editarProduto } from "../../../src/actions/gerenciamento/actions";
 
 interface Produto {
     id: number;
@@ -16,6 +18,32 @@ interface ModalEditarProps {
 }
 
 export default function ModalEditar({ fecharModal, produto }: ModalEditarProps) {
+    const [nome, setNome] = useState(produto.nome);
+    const [franquia, setFranquia] = useState(produto.franquia);
+    const [descricao, setDescricao] = useState(produto.descricao);
+    const [preco, setPreco] = useState(produto.preco.toString()); 
+    const [imagemBase64, setImagemBase64] = useState(produto.imagem);
+    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setImagemBase64(reader.result as string);
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+    const handleSalvar = async () => {
+        const precoFormatado = parseFloat(preco.replace(",", "."));
+        await editarProduto(produto.id, {
+            nome,
+            franquia,
+            descricao,
+            preco: precoFormatado || 0,
+            imagem: imagemBase64
+        });
+        fecharModal();
+    };
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4" onClick={fecharModal}>
             <div className="bg-[#171A1D] border border-[#3B3B40] rounded-xl w-full max-w-lg flex flex-col shadow-2xl" onClick={(e) => e.stopPropagation()} >
@@ -27,37 +55,49 @@ export default function ModalEditar({ fecharModal, produto }: ModalEditarProps) 
                 </div>
                 <div className="p-6 flex flex-col gap-4">
                     <div className="flex flex-col gap-1">
-                        <label className="text-sm font-bold text-[#C0C0C0]">Imagem do Produto</label>
-                        <div className="flex items-center justify-between p-3 bg-[#0D0F11] border border-[#3B3B40] rounded-lg">
-                            <div className="flex items-center gap-3">
-                                <div className="w-16 h-16 relative bg-[#171A1D] rounded flex items-center justify-center overflow-hidden">
-                                    <Image src={produto.imagem || "/file.svg"} alt="Imagem atual" width={70} height={70} className="object-contain" />
+                        <label className="font-semibold text-[#F5F5F5]">Imagem do Produto</label>
+                        {imagemBase64 ? (
+                            <div className="flex items-center justify-between p-3 bg-[#0D0F11] border border-[#3B3B40] rounded-lg">
+                                <div className="flex items-center gap-3">
+                                    <div className="w-10 h-10 relative bg-[#171A1D] rounded flex items-center justify-center overflow-hidden">
+                                        <Image src={imagemBase64} alt="Imagem atual" width={40} height={40} className="object-contain" />
+                                    </div>
+                                    <span className="text-sm text-[#F5F5F5]">Imagem Atual</span>
                                 </div>
-                                <span className="text-sm text-[#F5F5F5]">{produto.imagem || "Sem imagem"}</span>
+                                <button onClick={() => setImagemBase64("")} className="text-[#C0C0C0] hover:text-[#E11D48] cursor-pointer" title="Remover imagem">
+                                    <Trash2 size={18} />
+                                </button>
                             </div>
-                            <button className="text-[#C0C0C0] hover:text-[#E11D48] cursor-pointer" title="Remover imagem">
-                                <Trash2 size={18} />
-                            </button>
-                        </div>
+                        ) : (
+                            <label className="w-full h-34 border border-[#3B3B40] rounded-lg flex flex-col items-center justify-center text-sm text-[#C0C0C0] bg-[#0D0F11] cursor-pointer hover:bg-[#171A1D] overflow-hidden">
+                                <p><span className="text-[#1473CD] font-bold">Clique</span> para fazer upload</p>
+                                <p className="text-xs mt-1">ou arraste a imagem aqui</p>
+                                <input type="file" accept="image/png, image/jpeg" className="hidden" onChange={handleImageUpload} />
+                            </label>
+                        )}
                     </div>
                     <div className="flex flex-col gap-1">
                         <label className="text-sm font-bold text-[#C0C0C0]">Nome do Produto</label>
-                        <input type="text" defaultValue={`${produto.franquia} - ${produto.nome}`} className="p-3 bg-[#0D0F11] rounded-lg border border-[#3B3B40] text-[#F5F5F5] focus:outline-none focus:border-[#1473CD]" />
+                        <input type="text" value={nome} onChange={(e) => setNome(e.target.value)} className="p-3 bg-[#0D0F11] rounded-lg border border-[#3B3B40] text-[#F5F5F5] focus:outline-none focus:border-[#1473CD]" />
+                    </div>
+                    <div className="flex flex-col gap-1">
+                        <label className="text-sm font-bold text-[#C0C0C0]">Franquia do Produto</label>
+                        <input type="text" value={franquia} onChange={(e) => setFranquia(e.target.value)} className="p-3 bg-[#0D0F11] rounded-lg border border-[#3B3B40] text-[#F5F5F5] focus:outline-none focus:border-[#1473CD]" />
                     </div>
                     <div className="flex flex-col gap-1">
                         <label className="text-sm font-bold text-[#C0C0C0]">Preço</label>
-                        <input type="text" defaultValue={`${produto.preco}`} className="p-3 bg-[#0D0F11] rounded-lg border border-[#3B3B40] text-[#F5F5F5] focus:outline-none focus:border-[#1473CD]"/>
+                        <input type="text" value={preco} onChange={(e) => setPreco(e.target.value)} className="p-3 bg-[#0D0F11] rounded-lg border border-[#3B3B40] text-[#F5F5F5] focus:outline-none focus:border-[#1473CD]" />
                     </div>
                     <div className="flex flex-col gap-1">
                         <label className="text-sm font-bold text-[#C0C0C0]">Descrição</label>
-                        <textarea defaultValue={produto.descricao}placeholder="Descreva o produto..." rows={6} className="p-3 resize-none bg-[#0D0F11] rounded-lg border border-[#3B3B40] text-[#F5F5F5] focus:outline-none focus:border-[#1473CD]" />
+                        <textarea value={descricao} onChange={(e) => setDescricao(e.target.value)} placeholder="Descreva o produto..." rows={6} className="p-3 resize-none bg-[#0D0F11] rounded-lg border border-[#3B3B40] text-[#F5F5F5] focus:outline-none focus:border-[#1473CD]" />
                     </div>
                 </div>
                 <div className="flex items-center justify-end gap-4 p-6 border-t border-[#3B3B40]">
                     <button onClick={fecharModal} className="px-6 py-3 rounded-lg border border-[#3B3B40] text-[#C0C0C0] font-bold hover:bg-[#202428] cursor-pointer">
                         Cancelar
                     </button>
-                    <button className="px-6 py-3 rounded-lg bg-[#1473CD] hover:bg-[#105CA8] text-white font-bold cursor-pointer">
+                    <button onClick={handleSalvar} className="px-6 py-3 rounded-lg bg-[#1473CD] hover:bg-[#105CA8] text-white font-bold cursor-pointer">
                         Salvar Alterações
                     </button>
                 </div>

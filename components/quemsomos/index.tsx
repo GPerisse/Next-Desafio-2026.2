@@ -21,7 +21,7 @@ export default async function QuemSomos(){
                     Quem Somos
                     </h2>
                     <p className="text-[#C0C0C0]">
-                    A GeekPop é o lugar perfeito para quem ama cultura pop! Com uma enorme variedade de bonecos Funko Pop!, nosso objetivo é trazer seus personagens favoritos para perto de você, garantindo qualidade, originalidade e muita diversão em cada compra.
+                    A GeekPop é o lugar perfeito para quem ama cultura pop! Com uma enorme variedade de bonecos Funko Pop, nosso objetivo é trazer seus personagens favoritos para perto de você, garantindo qualidade, originalidade e muita diversão em cada compra.
                     </p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 w-full">

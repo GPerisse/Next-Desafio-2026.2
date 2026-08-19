@@ -1,5 +1,5 @@
 import { Trash2 } from "lucide-react";
-
+import { excluirProduto } from "../../../src/actions/gerenciamento/actions";
 interface Produto {
     id: number;
     nome: string;
@@ -15,6 +15,10 @@ interface ModalExcluirProps {
 }
 
 export default function ModalExcluir({ fecharModal, produto }: ModalExcluirProps) {
+    const handleExcluir = async () => {
+        await excluirProduto(produto.id);
+        fecharModal();
+    };
     return (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4" onClick={fecharModal}>
             <div className="bg-[#171A1D] border border-[#3B3B40] rounded-xl w-full max-w-lg flex flex-col shadow-2xl" onClick={(e) => e.stopPropagation()}>
@@ -27,7 +31,7 @@ export default function ModalExcluir({ fecharModal, produto }: ModalExcluirProps
                 </div>
                 <div className="flex items-center justify-center gap-4 p-10">
                         <button onClick={fecharModal} className="w-full py-3 px-6 bg-[#0D0F11] border border-[#3B3B40] hover:bg-[#111315e2] rounded-xl cursor-pointer text-[#C0C0C0] font-bold">Cancelar</button>
-                        <button className="w-full py-3 px-6 bg-[#FB2C36] border border-[#FB2C36] hover:bg-[#cf2f37] rounded-xl cursor-pointer text-[#F5F5F5] font-bold">Excluir</button>
+                        <button onClick={handleExcluir} className="w-full py-3 px-6 bg-[#FB2C36] border border-[#FB2C36] hover:bg-[#cf2f37] rounded-xl cursor-pointer text-[#F5F5F5] font-bold">Excluir</button>
                 </div>
             </div>
         </div>
