@@ -22,26 +22,35 @@ export default function ModalEditar({ fecharModal, produto }: ModalEditarProps) 
     const [franquia, setFranquia] = useState(produto.franquia);
     const [descricao, setDescricao] = useState(produto.descricao);
     const [preco, setPreco] = useState(produto.preco.toString()); 
-    const [imagemBase64, setImagemBase64] = useState(produto.imagem);
+    
+    const [imagemAtual, setImagemAtual] = useState(produto.imagem);
+    const [novaImagemFile, setNovaImagemFile] = useState<File | null>(null);
+    const [imagemPreview, setImagemPreview] = useState(produto.imagem);
+
     const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
         const file = e.target.files?.[0];
         if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setImagemBase64(reader.result as string);
-            };
-            reader.readAsDataURL(file);
+            setNovaImagemFile(file);
+            setImagemPreview(URL.createObjectURL(file));
         }
     };
+    const removerImagem = () => {
+        setImagemAtual("");
+        setNovaImagemFile(null);
+        setImagemPreview("");
+    };
     const handleSalvar = async () => {
-        const precoFormatado = parseFloat(preco.replace(",", "."));
-        await editarProduto(produto.id, {
-            nome,
-            franquia,
-            descricao,
-            preco: precoFormatado || 0,
-            imagem: imagemBase64
-        });
+        const precoFormatado = parseFloat(preco) || 0;
+        const formData = new FormData();
+        formData.append("nome", nome);
+        formData.append("franquia", franquia);
+        formData.append("descricao", descricao);
+        formData.append("preco", precoFormatado.toString());
+        formData.append("imagemAtual", imagemAtual);
+        if (novaImagemFile) {
+            formData.append("novaImagem", novaImagemFile);
+        }
+        await editarProduto(produto.id, formData);
         fecharModal();
     };
     return (
@@ -56,15 +65,15 @@ export default function ModalEditar({ fecharModal, produto }: ModalEditarProps) 
                 <div className="p-6 flex flex-col gap-4">
                     <div className="flex flex-col gap-1">
                         <label className="font-semibold text-[#F5F5F5]">Imagem do Produto</label>
-                        {imagemBase64 ? (
+                        {imagemPreview ? (
                             <div className="flex items-center justify-between p-3 bg-[#0D0F11] border border-[#3B3B40] rounded-lg">
                                 <div className="flex items-center gap-3">
                                     <div className="w-10 h-10 relative bg-[#171A1D] rounded flex items-center justify-center overflow-hidden">
-                                        <Image src={imagemBase64} alt="Imagem atual" width={40} height={40} className="object-contain" />
+                                        <Image src={imagemPreview} alt="Preview" width={300} height={300} className="w-auto h-auto max-w-full max-h-full object-contain" />
                                     </div>
                                     <span className="text-sm text-[#F5F5F5]">Imagem Atual</span>
                                 </div>
-                                <button onClick={() => setImagemBase64("")} className="text-[#C0C0C0] hover:text-[#E11D48] cursor-pointer" title="Remover imagem">
+                                <button onClick={removerImagem} className="text-[#C0C0C0] hover:text-[#E11D48] cursor-pointer" title="Remover imagem">
                                     <Trash2 size={18} />
                                 </button>
                             </div>

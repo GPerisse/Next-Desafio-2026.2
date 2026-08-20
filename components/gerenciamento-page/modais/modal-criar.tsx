@@ -11,26 +11,26 @@ export default function ModalCriar({ fecharModal }: ModalCriarProps) {
     const [franquia, setFranquia] = useState("");
     const [descricao, setDescricao] = useState("");
     const [preco, setPreco] = useState("");
-    const [imagemBase64, setImagemBase64] = useState<string>("");
+    const [imagemFile, setImagemFile] = useState<File | null>(null);
+    const [imagemPreview, setImagemPreview] = useState<string>("");
     const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
+        const file = e.target.files?.[0];
         if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setImagemBase64(reader.result as string);
-            };
-            reader.readAsDataURL(file); 
+            setImagemFile(file); 
+            setImagemPreview(URL.createObjectURL(file)); 
         }
     };
     const handleSalvar = async () => {
-        const precoFormatado = parseFloat(preco.replace(",", "."));
-        await criarProduto({
-            nome,
-            franquia,
-            descricao,
-            preco: precoFormatado || 0,
-            imagem: imagemBase64
-        });
+        const precoFormatado = parseFloat(preco) || 0;
+        const formData = new FormData();
+        formData.append("nome", nome);
+        formData.append("franquia", franquia);
+        formData.append("descricao", descricao);
+        formData.append("preco", precoFormatado.toString());
+        if (imagemFile) {
+            formData.append("imagem", imagemFile);
+        }
+        await criarProduto(formData);
         fecharModal();
     };
     return (
@@ -46,8 +46,8 @@ export default function ModalCriar({ fecharModal }: ModalCriarProps) {
                    <div className="flex flex-col gap-1">
                         <label className="font-semibold text-[#F5F5F5]">Imagem do Produto</label>
                         <label className="w-full h-34 border border-[#3B3B40] rounded-lg flex flex-col items-center justify-center text-sm text-[#C0C0C0] bg-[#0D0F11] cursor-pointer hover:bg-[#171A1D] overflow-hidden">
-                            {imagemBase64 ? (
-                                <Image src={imagemBase64} alt="Preview" width={300} height={300} className="w-full h-full object-contain" />
+                            {imagemPreview ? (
+                                <Image src={imagemPreview} alt="Preview" width={300} height={300} className="w-auto h-auto max-w-full max-h-full object-contain" />
                             ) : (
                                 <>
                                     <p><span className="text-[#1473CD] font-bold">Clique</span> para fazer upload</p>

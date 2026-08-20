@@ -86,7 +86,7 @@ export default function GerenciamentoPage({ produtos, totalPaginas, paginaAtual 
                                 <tr key={produto.id} className="border-b border-[#3B3B40] hover:bg-[#202428]">
                                     <td className="px-6 py-4">
                                         <div className="w-12 h-12 relative bg-[#0D0F11] border border-[#3B3B40] rounded-md overflow-hidden flex items-center justify-center">
-                                            <Image src={produto.imagem || "/file.svg"} alt={produto.nome} width={40} height={40} className="object-contain" />
+                                            <Image src={produto.imagem || "/file.svg"} alt={produto.nome} width={40} height={40} className="w-auto h-auto max-w-full max-h-full object-contain" />
                                         </div>
                                     </td>
                                     <td className="px-6 py-4 font-bold text-[#F5F5F5] max-w-50 truncate" title={`${produto.franquia} - ${produto.nome}`}>
