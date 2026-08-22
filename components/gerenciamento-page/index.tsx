@@ -60,9 +60,9 @@ export default function GerenciamentoPage({ produtos, totalPaginas, paginaAtual 
     };
 
     return (
-        <div className="flex flex-col md:flex-row bg-[#0D0F11]">
+        <div className="flex flex-col md:flex-row min-h-screen bg-[#0D0F11]">
             <Sidebar/>
-            <div className="flex-1 py-8 px-4 md:py-11 md:px-8 w-full max-w-7xl mx-auto">
+            <div className="flex-1 py-8 px-4 md:py-11 md:px-8 w-full max-w-7xl mx-auto min-w-0">
                 <div className="flex items-center justify-between gap-4 mb-4">
                     <h1 className="text-lg md:text-3xl font-black tracking-tight">GERENCIAMENTO DE PRODUTOS</h1>
                     <button onClick={() => setModalAberto('criar')} className="bg-[#05AC4B] hover:bg-[#048b3c] text-[#F5F5F5] font-bold p-2 md:py-3 md:px-6 rounded-lg flex items-center justify-center gap-2 cursor-pointer">
